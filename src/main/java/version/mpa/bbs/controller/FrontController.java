@@ -45,13 +45,8 @@ public class FrontController extends HttpServlet {
 		String url = request.getRequestURI();
 		System.out.println("POST REQ");
 		System.out.println(url);
-
-		switch (url) {
-			case "/signup":
-				postSignUpController(request, response);
-				break;
-			default:
-				return;
+		if (Objects.equals(url, URLs.SIGN_UP.getUrl())){
+			signUpFormController(request, response);
 		}
 	}
 
@@ -91,7 +86,7 @@ public class FrontController extends HttpServlet {
 	/**
 	 * 회원가입 POST 컨트롤러 메서드
 	 */
-	private void postSignUpController(HttpServletRequest request, HttpServletResponse response)
+	private void signUpController(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		System.out.println(request.getParameter("account"));
 		System.out.println(request.getParameter("password"));
