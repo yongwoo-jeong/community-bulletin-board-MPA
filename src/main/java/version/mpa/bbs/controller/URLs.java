@@ -9,7 +9,7 @@ import lombok.Getter;
 @Getter
 @AllArgsConstructor
 public enum URLs {
-	HOME("/"),
+	HOME("/home"),
 	LOGIN("/login"),
 	SIGN_UP("/signup");
 

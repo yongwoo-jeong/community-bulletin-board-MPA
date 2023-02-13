@@ -12,8 +12,9 @@ import org.mindrot.jbcrypt.BCrypt;
 
 /**
  * Servlet dispatcher getting all the Request from client.
+ *
  */
-@WebServlet("/")
+@WebServlet(urlPatterns = {"/home", "/login", "/signup"} )
 @AllArgsConstructor
 public class FrontController extends HttpServlet {
 
