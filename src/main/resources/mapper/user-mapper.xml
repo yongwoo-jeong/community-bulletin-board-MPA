@@ -3,7 +3,7 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="version.mpa.bbs.mapperInterface.UserMapper">
-  <!-- 새 게시글 등록을 위한 INSERT 쿼리  -->
+  <!-- 회원 등록을 위한 INSERT 쿼리 // 일반회원으로 가입  -->
   <insert id="insertUser">
     INSERT INTO user_account
                             (
@@ -16,10 +16,10 @@
                             )
                             VALUES
                             (
-                            account,
-                            password,
-                            username,
-                            email,
+                            #{newUser.account},
+                            #{newUser.password},
+                            #{newUser.userName},
+                            #{newUser.email},
                             NOW(),
                             1
                             )

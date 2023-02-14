@@ -3,6 +3,7 @@ package version.mpa.bbs.dao;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.List;
+import lombok.AllArgsConstructor;
 import org.apache.ibatis.io.Resources;
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
@@ -14,28 +15,23 @@ import version.mpa.bbs.vo.SearchCriteriaVO;
 /**
  * myBatis 매퍼들을 이용해 게시글 관련 데이터 생성, 읽기, 수정, 삭제하는 클래스
  */
+@AllArgsConstructor
 public class ArticleDAO {
 
-	/**
-	 * ArticleMapper 로드해주는 메서드
-	 * @return
-	 */
-	public ArticleMapper loadMapper() throws IOException {
-		ArticleMapper mapper;
-		String resource = "mybatis-config.xml";
-		SqlSessionFactory sqlSessionFactory;
-		InputStream inputStream = Resources.getResourceAsStream(resource);
-		sqlSessionFactory = new SqlSessionFactoryBuilder().build(inputStream);
-		SqlSession session = sqlSessionFactory.openSession(true);
-		mapper = session.getMapper(ArticleMapper.class);
-		session.close();
-		return mapper;
-	}
+//	/**
+//	 * ArticleMapper 로드해주는 메서드
+//	 * @return
+//	 */
+//	public ArticleMapper loadMapper() throws IOException {
+//		ArticleMapper articleMapper = null;
+//		articleMapper = mapperLoader.mapperLoad(articleMapper);
+//		return articleMapper.selectSearchArticles();
+//	}
 
-	public List<ArticleVO> getAllArticles() throws IOException {
-		SearchCriteriaVO searchCriteria = SearchCriteriaVO.builder().keyword("ㅁㄴㅇ").build();
-		return loadMapper().selectSearchArticles("notice_article", 0, searchCriteria);
-	}
+//	public List<ArticleVO> getAllArticles() throws IOException {
+//		SearchCriteriaVO searchCriteria = SearchCriteriaVO.builder().keyword("ㅁㄴㅇ").build();
+//		return loadMapper().selectSearchArticles("notice_article", 0, searchCriteria);
+//	}
 
 //	/**
 //	 * 게시글 등록을 위한 메서드

@@ -9,6 +9,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import lombok.AllArgsConstructor;
 import org.mindrot.jbcrypt.BCrypt;
+import version.mpa.bbs.dao.UserDAO;
+import version.mpa.bbs.service.UserService;
+import version.mpa.bbs.vo.UserVO;
 
 /**
  * Servlet dispatcher getting all the Request from client.
@@ -47,7 +50,7 @@ public class FrontController extends HttpServlet {
 		System.out.println("POST REQ");
 		System.out.println(url);
 		if (Objects.equals(url, URLs.SIGN_UP.getUrl())){
-			signUpFormController(request, response);
+			signUpController(request, response);
 		}
 	}
 
@@ -89,11 +92,14 @@ public class FrontController extends HttpServlet {
 	 */
 	private void signUpController(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		System.out.println(request.getParameter("account"));
-		System.out.println(request.getParameter("password"));
-		System.out.println(request.getParameter("passwordConfirm"));
-		System.out.println(request.getParameter("name"));
-		System.out.println(request.getParameter("email"));
+		request.setCharacterEncoding("utf-8");
+		String account = request.getParameter("account");
+		String password = request.getParameter("password");
+//		String passwordConfirm = request.getParameter("passwordConfirm");
+		String name = request.getParameter("name");
+		String email = request.getParameter("email");
+		UserVO newUser = UserVO.builder().account(account).password(password).userName(name).email(email).build();
+		new UserService(new UserDAO()).userSignUp(newUser);
 		request.getRequestDispatcher("/signUp.jsp").forward(request, response);
 	}
 

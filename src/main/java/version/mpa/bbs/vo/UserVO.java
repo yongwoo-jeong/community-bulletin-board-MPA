@@ -1,5 +1,6 @@
 package version.mpa.bbs.vo;
 
+import lombok.Builder;
 import lombok.Getter;
 import lombok.NonNull;
 import lombok.Setter;
@@ -9,6 +10,7 @@ import lombok.Setter;
  */
 @Getter
 @Setter
+@Builder
 public class UserVO {
 
 	/**
@@ -45,7 +47,6 @@ public class UserVO {
 	/**
 	 * 계정 생성일
 	 */
-	@NonNull
 	private String created;
 
 	/**
@@ -56,7 +57,6 @@ public class UserVO {
 	/**
 	 * 역할코드
 	 */
-	@NonNull
 	private Integer roleCode;
 
 }
