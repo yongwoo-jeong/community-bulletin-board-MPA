@@ -16,36 +16,38 @@ import version.mpa.bbs.vo.SearchCriteriaVO;
  */
 public class ArticleDAO {
 
-
-	/**
-	 * session commit, close 위한 sql 세션 멤버변수
-	 */
-	static SqlSession session;
-
 	/**
 	 * ArticleMapper 로드해주는 메서드
 	 * @return
 	 */
-	public ArticleMapper loadMapper() {
-		ArticleMapper mapper = null;
+	public ArticleMapper loadMapper() throws IOException {
+		ArticleMapper mapper;
 		String resource = "mybatis-config.xml";
 		SqlSessionFactory sqlSessionFactory;
-		try {
-			InputStream inputStream = Resources.getResourceAsStream(resource);
-			sqlSessionFactory = new SqlSessionFactoryBuilder().build(inputStream);
-			session = sqlSessionFactory.openSession(true);
-			mapper = session.getMapper(ArticleMapper.class);
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
+		InputStream inputStream = Resources.getResourceAsStream(resource);
+		sqlSessionFactory = new SqlSessionFactoryBuilder().build(inputStream);
+		SqlSession session = sqlSessionFactory.openSession(true);
+		mapper = session.getMapper(ArticleMapper.class);
+		session.close();
 		return mapper;
 	}
 
-	public List<ArticleVO> getAllArticles(){
+	public List<ArticleVO> getAllArticles() throws IOException {
 		SearchCriteriaVO searchCriteria = SearchCriteriaVO.builder().keyword("ㅁㄴㅇ").build();
 		return loadMapper().selectSearchArticles("notice_article", 0, searchCriteria);
-
 	}
+
+//	/**
+//	 * 게시글 등록을 위한 메서드
+//	 *
+//	 * @param articleVO
+//	 */
+//	public void insertArticle(ArticleVO articleVO) {
+//		loadMapper().insertArticle(articleVO);
+//		session.commit();
+//		session.close();
+//	}
+
 //	/**
 //	 * index page, 검색 조건 토대로 해당되는 아티클 인스턴스 리스트를 리턴해주는 메서드
 //	 *
