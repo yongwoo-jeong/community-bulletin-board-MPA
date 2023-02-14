@@ -9,12 +9,13 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
+    <link rel="stylesheet" href="/css/index.css" />
     <jsp:include page="component/title.jsp">
         <jsp:param name="titleValue" value='<%=URLEncoder.encode("회원가입", "UTF-8") %>' />
     </jsp:include>
 </head>
 <body>
-    <header>회원가입</header>
+<jsp:include page="component/navigation.jsp"></jsp:include>
     <main>
         <div>
             <form method="post" action="${pageContext.request.contextPath}/signup">
@@ -46,5 +47,6 @@
         </div>
     </main>
 <script src="js/signUp.js"></script>
+<script src="js/navigation.js"></script>
 </body>
 </html>

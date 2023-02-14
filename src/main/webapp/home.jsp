@@ -10,23 +10,7 @@
     <link rel="stylesheet" href="${pageContext.request.contextPath}/css/home.css" type="text/css">
 </head>
 <body>
-<% System.out.println(request.getContextPath());%>
-<jsp:include page="component/navigation.jsp">
-</jsp:include>
-<header>
-    <div class="header__logo"></div>
-    <div class="header__nav-bar"></div>
-    <div class="header__search-bar">
-        <form>
-            <input type="text" placeholder="검색"/>
-            <input type="submit" />
-        </form>
-    </div>
-    <div class="header__login">
-        <div style="cursor: pointer" class="button" onclick="location.href='/login'">로그인</div>
-        <div style="cursor: pointer" class="button" onclick="location.href='/signup'">회원가입</div>
-    </div>
-</header>
+<jsp:include page="component/navigation.jsp"></jsp:include>
 <br/>
 
 <main class="board">
