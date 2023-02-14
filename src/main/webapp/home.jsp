@@ -1,13 +1,18 @@
+<%@ page import="java.net.URLEncoder" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
          pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
-    <title>종합 게시판 - 홈</title>
-    <link rel="stylesheet" href="./css/home.css" type="text/css">
+    <jsp:include page="component/title.jsp">
+        <jsp:param name="titleValue" value='<%=URLEncoder.encode("종합 게시판 - 홈", "UTF-8") %>' />
+    </jsp:include>
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/home.css" type="text/css">
 </head>
 <body>
 <% System.out.println(request.getContextPath());%>
+<jsp:include page="component/navigation.jsp">
+</jsp:include>
 <header>
     <div class="header__logo"></div>
     <div class="header__nav-bar"></div>
@@ -23,7 +28,10 @@
     </div>
 </header>
 <br/>
+
 <main class="board">
+
+<%--    <% String headerTitle = "홈페이지";%>--%>
     <section class="board__notice">
         <div class="section__header">공지사항</div>
         <div class="article-list__container">
@@ -49,6 +57,7 @@
 </main>
 <footer></footer>
 <br/>
+<script src="./js/navigation.js"></script>
 <script src="./js/home.js"></script>
 </body>
 </html>

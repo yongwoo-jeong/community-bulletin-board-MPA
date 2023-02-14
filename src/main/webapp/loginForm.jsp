@@ -1,4 +1,4 @@
-<%--
+<%@ page import="java.net.URLEncoder" %><%--
   Created by IntelliJ IDEA.
   User: jyw
   Date: 2023/02/07
@@ -8,7 +8,9 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>로그인 페이지</title>
+    <jsp:include page="component/title.jsp">
+        <jsp:param name="titleValue" value='<%=URLEncoder.encode("로그인 페이지", "UTF-8") %>' />
+    </jsp:include>
 </head>
 <body>
 <div>
