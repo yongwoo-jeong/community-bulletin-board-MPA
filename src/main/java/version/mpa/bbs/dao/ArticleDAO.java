@@ -1,16 +1,6 @@
 package version.mpa.bbs.dao;
 
-import java.io.IOException;
-import java.io.InputStream;
-import java.util.List;
 import lombok.AllArgsConstructor;
-import org.apache.ibatis.io.Resources;
-import org.apache.ibatis.session.SqlSession;
-import org.apache.ibatis.session.SqlSessionFactory;
-import org.apache.ibatis.session.SqlSessionFactoryBuilder;
-import version.mpa.bbs.mapperInterface.ArticleMapper;
-import version.mpa.bbs.vo.ArticleVO;
-import version.mpa.bbs.vo.SearchCriteriaVO;
 
 /**
  * myBatis 매퍼들을 이용해 게시글 관련 데이터 생성, 읽기, 수정, 삭제하는 클래스

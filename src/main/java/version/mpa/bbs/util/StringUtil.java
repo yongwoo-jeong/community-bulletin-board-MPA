@@ -8,12 +8,17 @@ import java.util.Objects;
 public class StringUtil {
 
 	/**
+	 * 인스턴스 생성 방지
+	 */
+	private StringUtil(){}
+
+	/**
 	 * 두 문자열 일치여부
 	 * @param stringOne 비교대상 문자열
 	 * @param stringTwo 비교대상 문자열
 	 * @return true || false
 	 */
-	public Boolean isStringMatch(String stringOne, String stringTwo) {
+	public static Boolean isStringMatch(String stringOne, String stringTwo) {
 		return Objects.equals(stringOne, stringTwo);
 	}
 

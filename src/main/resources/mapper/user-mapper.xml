@@ -3,6 +3,11 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="version.mpa.bbs.mapperInterface.UserMapper">
+  <select id="selectUser" resultType="version.mpa.bbs.vo.UserVO">
+    SELECT *
+    FROM user_account
+    WHERE account = #{account}
+  </select>
   <!-- 회원 등록을 위한 INSERT 쿼리 // 일반회원으로 가입  -->
   <insert id="insertUser">
     INSERT INTO user_account

@@ -17,9 +17,9 @@
 <jsp:include page="component/navigation.jsp"></jsp:include>
 <div>
     <div class="form-container">
-        <form>
-            <input type="text" placeholder="아이디"/>
-            <input type="password" placeholder="비밀번호"/>
+        <form method="post" action="/login">
+            <input name="account" type="text" placeholder="아이디"/>
+            <input name="password" type="password" placeholder="비밀번호"/>
             <input type="submit"/>
         </form>
     </div>
