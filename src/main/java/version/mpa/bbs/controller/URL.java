@@ -8,12 +8,14 @@ import lombok.Getter;
  */
 @Getter
 @AllArgsConstructor
-public enum URLs {
-	HOME("/home"),
-	LOGIN("/login"),
-	SIGN_UP("/signup");
+public enum URL {
+	HOME("/home", "/home.jsp"),
+	LOGIN("/login", "/loginForm.jsp"),
+	SIGNUP("/signup", "/signUp.jsp"),
+	ERROR("/error", "/error.jsp");
 
-	private final String url;
+	private final String urlPath;
+	private final String viewPath;
 
 //	public static EnumMap<URLs,String> getUrlMap(){
 //		EnumMap<URLs, String> map = new EnumMap<>(URLs.class);

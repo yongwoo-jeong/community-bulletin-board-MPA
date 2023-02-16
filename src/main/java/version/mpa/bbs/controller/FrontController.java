@@ -8,10 +8,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import lombok.AllArgsConstructor;
-import org.mindrot.jbcrypt.BCrypt;
-import version.mpa.bbs.service.UserService;
-import version.mpa.bbs.util.StringUtil;
-import version.mpa.bbs.vo.UserVO;
 
 /**
  * Servlet dispatcher getting all the Request from client.
@@ -27,18 +23,19 @@ public class FrontController extends HttpServlet {
 			String url = request.getRequestURI();
 			System.out.println("get REQ");
 			System.out.println(url);
-			if (Objects.equals(url, URLs.HOME.getUrl())) {
+			if (Objects.equals(url, URL.HOME.getUrlPath())) {
 				homeController(request, response);
 			}
-			if (Objects.equals(url, URLs.LOGIN.getUrl())){
+			if (Objects.equals(url, URL.LOGIN.getUrlPath())){
 				new UserController().loginFormController(request, response);
 			}
-			if (Objects.equals(url, URLs.SIGN_UP.getUrl())){
+			if (Objects.equals(url, URL.SIGNUP.getUrlPath())){
 				new UserController().signUpFormController(request, response);
 			}
 
 		} catch (ServletException | IOException error) {
 			request.setAttribute("error", error);
+
 		}
 
 	}
@@ -49,10 +46,10 @@ public class FrontController extends HttpServlet {
 		String url = request.getRequestURI();
 		System.out.println("POST REQ");
 		System.out.println(url);
-		if (Objects.equals(url, URLs.SIGN_UP.getUrl())){
+		if (Objects.equals(url, URL.SIGNUP.getUrlPath())){
 			new UserController().signUpController(request, response);
 		}
-		if (Objects.equals(url, URLs.LOGIN.getUrl())){
+		if (Objects.equals(url, URL.LOGIN.getUrlPath())){
 			new UserController().loginController(request, response);
 		}
 	}
@@ -62,7 +59,7 @@ public class FrontController extends HttpServlet {
 	 */
 	private void homeController(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		request.getRequestDispatcher("/home.jsp").forward(request, response);
+		request.getRequestDispatcher(URL.HOME.getViewPath()).forward(request, response);
 	}
 
 	/**

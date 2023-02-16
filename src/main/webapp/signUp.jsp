@@ -21,23 +21,25 @@
             <form method="post" action="${pageContext.request.contextPath}/signup">
                 <table style="border-collapse: collapse">
                     <caption></caption>
-                    <tr>
+                    <tr class="accountRow">
                         <th>아이디</th>
                         <td><input type="text" name="account"/></td>
+                        <td class="">영어 소문자,숫자(5~9자)</td>
+                        <td></td>
                     </tr>
-                    <tr>
+                    <tr class="passwordRow">
                         <th>비밀번호</th>
                         <td><input type="password" name="password"/></td>
                     </tr>
-                    <tr>
+                    <tr class="passwordConfirmRow">
                         <th>비밀번호 확인</th>
                         <td><input type="password" name="passwordConfirm"/></td>
                     </tr>
-                    <tr>
+                    <tr class="nameRow">
                         <th>이름</th>
                         <td><input type="text" name="name"/></td>
                     </tr>
-                    <tr>
+                    <tr class="emailRow">
                         <th>이메일</th>
                         <td><input type="email" name="email"/></td>
                     </tr>
@@ -46,7 +48,7 @@
             </form>
         </div>
     </main>
-<script src="js/signUp.js"></script>
+<script src="js/signUp.js" type="module"></script>
 <script src="js/navigation.js"></script>
 </body>
 </html>

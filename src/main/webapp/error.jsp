@@ -11,6 +11,12 @@
     <title>에러 페이지</title>
 </head>
 <body>
-  <%=request.getAttribute("error")%>
+<div>
+    <a>에러가 발생했습니다</a>
+</div>
+<div>
+    <a href="/home">홈으로 돌아가기</a>
+    <a href="">이전페이지로 돌아가기</a>
+</div>
 </body>
 </html>

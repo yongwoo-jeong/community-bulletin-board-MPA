@@ -15,7 +15,7 @@ public class UserController {
 	 */
 	protected void loginFormController(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		request.getRequestDispatcher("/loginForm.jsp").forward(request, response);
+		request.getRequestDispatcher(URL.LOGIN.getViewPath()).forward(request, response);
 	}
 
 	protected void loginController(HttpServletRequest request, HttpServletResponse response)
@@ -28,7 +28,7 @@ public class UserController {
 	 */
 	protected void signUpFormController(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		request.getRequestDispatcher("/signUp.jsp").forward(request, response);
+		request.getRequestDispatcher(URL.SIGNUP.getViewPath()).forward(request, response);
 	}
 
 	/**
