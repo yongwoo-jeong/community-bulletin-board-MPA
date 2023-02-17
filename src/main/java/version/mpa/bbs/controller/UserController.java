@@ -14,10 +14,16 @@ import version.mpa.bbs.vo.UserVO;
  * 회원 관련 요청 컨트롤러
  */
 public class UserController {
+
+	/**
+	 * 뷰에 설정될 에러 Attribute name
+	 */
+	private final String errorMessage = "ERROR_MESSAGE";
+
 	/**
 	 * 로그인 페이지 GET 요청 처리
 	 */
-	protected void loginFormController(HttpServletRequest request, HttpServletResponse response)
+	protected void getLoginController(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		request.getRequestDispatcher(URL.LOG_IN.getViewPath()).forward(request, response);
 	}
@@ -29,9 +35,15 @@ public class UserController {
 	 * @param response HttpServletResponse
 	 * @throws IOException
 	 */
-	protected void loginController(HttpServletRequest request, HttpServletResponse response)
+	protected void postLoginController(HttpServletRequest request, HttpServletResponse response)
 			throws IOException {
-		new UserService().selectUser(request.getParameter("account"));
+		String userInputAccount = request.getParameter("account");
+		String userInputPassword = request.getParameter("password");
+		UserVO targetUser = new UserService().selectUser(userInputAccount);
+		if (!BCrypt.checkpw(userInputPassword, targetUser.getPassword())){
+			request.setAttribute(errorMessage, LoginError.INCORRECT_PASSWORD.getErrorMessage());
+			response.sendError(400);
+		}
 	}
 
 	/**
@@ -44,7 +56,7 @@ public class UserController {
 
 	/**
 	 * 회원가입 POST 요청 처리
-	 * TODO 반복되는 "errorMessage" 어떻게 처리?
+	 * TODO 반복되는 ERROR_MESSAGE 어떻게 처리?
 	 */
 	protected void postSignUpController(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
@@ -52,40 +64,40 @@ public class UserController {
 		String account = request.getParameter("account");
 		// 알파벳 소문자, 숫자 5~9자
 		if (!Pattern.matches("^[a-z0-9]{5,9}$",account)){
-			request.setAttribute("errorMessage", formValidMessage.ACCOUNT.getErrorMessage());
+			request.setAttribute(errorMessage, SignUpError.ACCOUNT.getErrorMessage());
 			response.sendError(422);
 		}
 		// 아이디 중복 체크
 		if (new UserService().selectUser(account)!=null){
-			request.setAttribute("errorMessage", formValidMessage.ACCOUNT_EXISTS.getErrorMessage());
+			request.setAttribute(errorMessage, SignUpError.ACCOUNT_EXISTS.getErrorMessage());
 			response.sendError(422);
 		}
 		// 특수문자, 소문자, 숫자 6~ 15자
 		String password =request.getParameter("password");
 		if (!Pattern.matches("^[a-z0-9`~!@#$%^&*()-_=+]{6,15}$", password)){
-			request.setAttribute("errorMessage", formValidMessage.PASSWORD.getErrorMessage());
+			request.setAttribute(errorMessage, SignUpError.PASSWORD.getErrorMessage());
 			response.sendError(422);
 		}
 		String passwordConfirm = request.getParameter("passwordConfirm");
 		if (!Pattern.matches("^[a-z0-9`~!@#$%^&*()-_=+]{6,15}$", passwordConfirm)){
-			request.setAttribute("errorMessage", formValidMessage.PASSWORD_CONFIRM.getErrorMessage());
+			request.setAttribute(errorMessage, SignUpError.PASSWORD_CONFIRM.getErrorMessage());
 			response.sendError(422);
 		}
 		// 비밀번호, 비밀번호 확인 일치
 		if (Boolean.FALSE.equals(StringUtil.isStringMatch(password, passwordConfirm))){
-			request.setAttribute("errorMessage", formValidMessage.PASSWORD_NOT_MATCH.getErrorMessage());
+			request.setAttribute(errorMessage, SignUpError.PASSWORD_NOT_MATCH.getErrorMessage());
 			response.sendError(422);
 		}
 		//한글 3,4자
 		String name = request.getParameter("name");
 		if (!Pattern.matches("^[ㄱ-ㅎ|가-힣]{3,4}$", name)){
-			request.setAttribute("errorMessage", formValidMessage.NAME.getErrorMessage());
+			request.setAttribute(errorMessage, SignUpError.NAME.getErrorMessage());
 			response.sendError(422);
 		}
 		// 이메일 형식
 		String email = request.getParameter("email");
 		if (!Pattern.matches("^[-0-9A-Za-z!#$%&'*+/=?^_`{|}~.]+@[-0-9A-Za-z!#$%&'*+/=?^_`{|}~]+[.][0-9A-Za-z]", email)){
-			request.setAttribute("errorMessage", formValidMessage.EMAIL.getErrorMessage());
+			request.setAttribute(errorMessage, SignUpError.EMAIL.getErrorMessage());
 			response.sendError(422);
 		}
 

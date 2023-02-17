@@ -27,7 +27,7 @@ public class FrontController extends HttpServlet {
 				homeController(request, response);
 			}
 			if (Objects.equals(url, URL.LOG_IN.getUrlPath())){
-				new UserController().loginFormController(request, response);
+				new UserController().getLoginController(request, response);
 			}
 			if (Objects.equals(url, URL.SIGN_UP.getUrlPath())){
 				new UserController().getSignUpController(request, response);
@@ -48,7 +48,7 @@ public class FrontController extends HttpServlet {
 			new UserController().postSignUpController(request, response);
 		}
 		if (Objects.equals(url, URL.LOG_IN.getUrlPath())){
-			new UserController().loginController(request, response);
+			new UserController().postLoginController(request, response);
 		}
 	}
 

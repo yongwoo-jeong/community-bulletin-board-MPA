@@ -14,9 +14,8 @@ public class UserService {
 	 * @param userInputAccount 유저 입력 아이디
 	 * @return
 	 */
-	public Boolean selectUser(String userInputAccount) throws IOException {
-		UserVO user = new UserDAO().selectUser(userInputAccount);
-		return true;
+	public UserVO selectUser(String userInputAccount) throws IOException {
+		return new UserDAO().selectUser(userInputAccount);
 	}
 
 	/**
