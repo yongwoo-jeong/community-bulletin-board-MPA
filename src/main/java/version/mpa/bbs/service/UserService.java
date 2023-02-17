@@ -12,12 +12,10 @@ public class UserService {
 	 * 로그인 메서드
 	 * TODO 유저 로그인 및 필터도 처리
 	 * @param userInputAccount 유저 입력 아이디
-	 * @param userInputPassword 유저 입력 비밀번호
 	 * @return
 	 */
-	public Boolean userLogin(String userInputAccount, String userInputPassword) throws IOException {
+	public Boolean selectUser(String userInputAccount) throws IOException {
 		UserVO user = new UserDAO().selectUser(userInputAccount);
-		System.out.println(user.getPassword());
 		return true;
 	}
 

@@ -10,6 +10,7 @@ import lombok.Getter;
 @AllArgsConstructor
 public enum formValidMessage {
 	ACCOUNT("제출된 ID 형식이 올바르지 않습니다."),
+	ACCOUNT_EXISTS("이미 존재하는 ID 입니다."),
 	PASSWORD("제출된 비밀번호 형식이 올바르지 않습니다."),
 	PASSWORD_CONFIRM("제출된 비밀번호 확인 형식이 올바르지 않습니다."),
 	PASSWORD_NOT_MATCH("비밀번호-확인이 일치하지 않습니다."),

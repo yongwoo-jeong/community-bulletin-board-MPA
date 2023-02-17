@@ -30,7 +30,7 @@ public class FrontController extends HttpServlet {
 				new UserController().loginFormController(request, response);
 			}
 			if (Objects.equals(url, URL.SIGN_UP.getUrlPath())){
-				new UserController().signUpFormController(request, response);
+				new UserController().getSignUpController(request, response);
 			}
 
 		} catch (ServletException | IOException error) {
@@ -45,7 +45,7 @@ public class FrontController extends HttpServlet {
 		System.out.println("POST REQ");
 		System.out.println(url);
 		if (Objects.equals(url, URL.SIGN_UP.getUrlPath())){
-			new UserController().signUpController(request, response);
+			new UserController().postSignUpController(request, response);
 		}
 		if (Objects.equals(url, URL.LOG_IN.getUrlPath())){
 			new UserController().loginController(request, response);

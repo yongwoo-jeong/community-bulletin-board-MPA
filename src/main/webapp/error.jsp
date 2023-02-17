@@ -13,7 +13,12 @@
 <body>
 <div>
     <a>에러가 발생했습니다</a>
+    <% String error = (String) request.getAttribute("errorMessage");
+        if (error!= null) {%>
     <a><%=request.getAttribute("errorMessage")%></a>
+    <% } else {  %>
+    <a>알 수 없는 에러가 발생하였습니다.</a>
+    <% } %>
 </div>
 <div>
     <a href="/home">홈으로 돌아가기</a>

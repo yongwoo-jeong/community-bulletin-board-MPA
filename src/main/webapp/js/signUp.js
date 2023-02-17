@@ -69,6 +69,7 @@ function onEmailChange(event){
  */
 function onSubmitClick(event){
   let allInputValidList = [isAccountValid, isPasswordValid, isPasswordConfirmValid, isNameValid, isEmailValid];
+  console.log(allInputValidList);
   for (let valid of allInputValidList){
     if (valid === false){
       alert("정보가 올바르지 않습니다.");
