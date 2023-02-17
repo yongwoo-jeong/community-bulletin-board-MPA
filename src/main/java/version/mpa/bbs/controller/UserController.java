@@ -3,6 +3,7 @@ package version.mpa.bbs.controller;
 import java.io.IOException;
 import java.util.regex.Pattern;
 import javax.servlet.ServletException;
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import org.mindrot.jbcrypt.BCrypt;
@@ -30,20 +31,26 @@ public class UserController {
 
 	/**
 	 * 로그인 POST 요청 처리
-	 * TODO 로그인상태유지) 쿠키 추가
+	 * TODO 로그인 후 원래 있던 페이지로 이동
 	 * @param request HttpServletRequest
 	 * @param response HttpServletResponse
 	 * @throws IOException
 	 */
 	protected void postLoginController(HttpServletRequest request, HttpServletResponse response)
-			throws IOException {
+			throws IOException, ServletException {
+		request.setCharacterEncoding("utf-8");
 		String userInputAccount = request.getParameter("account");
 		String userInputPassword = request.getParameter("password");
 		UserVO targetUser = new UserService().selectUser(userInputAccount);
 		if (!BCrypt.checkpw(userInputPassword, targetUser.getPassword())){
 			request.setAttribute(errorMessage, LoginError.INCORRECT_PASSWORD.getErrorMessage());
 			response.sendError(400);
+			return;
 		}
+		Cookie idCookie = new Cookie("accountId", targetUser.getAccount());
+		idCookie.setMaxAge(2 * 60 * 60);
+		response.addCookie(idCookie);
+		request.getRequestDispatcher(URL.HOME.getViewPath()).forward(request,response);
 	}
 
 	/**
