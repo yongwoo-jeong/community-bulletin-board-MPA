@@ -26,18 +26,16 @@ public class FrontController extends HttpServlet {
 			if (Objects.equals(url, URL.HOME.getUrlPath())) {
 				homeController(request, response);
 			}
-			if (Objects.equals(url, URL.LOGIN.getUrlPath())){
+			if (Objects.equals(url, URL.LOG_IN.getUrlPath())){
 				new UserController().loginFormController(request, response);
 			}
-			if (Objects.equals(url, URL.SIGNUP.getUrlPath())){
+			if (Objects.equals(url, URL.SIGN_UP.getUrlPath())){
 				new UserController().signUpFormController(request, response);
 			}
 
 		} catch (ServletException | IOException error) {
 			request.setAttribute("error", error);
-
 		}
-
 	}
 
 	@Override
@@ -46,10 +44,10 @@ public class FrontController extends HttpServlet {
 		String url = request.getRequestURI();
 		System.out.println("POST REQ");
 		System.out.println(url);
-		if (Objects.equals(url, URL.SIGNUP.getUrlPath())){
+		if (Objects.equals(url, URL.SIGN_UP.getUrlPath())){
 			new UserController().signUpController(request, response);
 		}
-		if (Objects.equals(url, URL.LOGIN.getUrlPath())){
+		if (Objects.equals(url, URL.LOG_IN.getUrlPath())){
 			new UserController().loginController(request, response);
 		}
 	}

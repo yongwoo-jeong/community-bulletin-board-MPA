@@ -10,8 +10,8 @@ import lombok.Getter;
 @AllArgsConstructor
 public enum URL {
 	HOME("/home", "/home.jsp"),
-	LOGIN("/login", "/loginForm.jsp"),
-	SIGNUP("/signup", "/signUp.jsp"),
+	LOG_IN("/login", "/loginForm.jsp"),
+	SIGN_UP("/signup", "/signUp.jsp"),
 	ERROR("/error", "/error.jsp");
 
 	private final String urlPath;

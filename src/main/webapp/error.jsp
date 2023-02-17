@@ -13,6 +13,7 @@
 <body>
 <div>
     <a>에러가 발생했습니다</a>
+    <a><%=request.getAttribute("errorMessage")%></a>
 </div>
 <div>
     <a href="/home">홈으로 돌아가기</a>
