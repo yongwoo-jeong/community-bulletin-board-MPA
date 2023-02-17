@@ -25,11 +25,11 @@
                         <th>아이디</th>
                         <td><input type="text" name="account"/></td>
                         <td class="">영어 소문자,숫자(5~9자)</td>
-                        <td></td>
                     </tr>
                     <tr class="passwordRow">
                         <th>비밀번호</th>
                         <td><input type="password" name="password"/></td>
+                        <td class="">영어 특수문자(`~!@#$%^&*),소문자,숫자(6~15자)</td>
                     </tr>
                     <tr class="passwordConfirmRow">
                         <th>비밀번호 확인</th>
