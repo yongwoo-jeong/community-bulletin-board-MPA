@@ -34,14 +34,17 @@
                     <tr class="passwordConfirmRow">
                         <th>비밀번호 확인</th>
                         <td><input type="password" name="passwordConfirm"/></td>
+                        <td class="">비밀번호와 동일하게 설정</td>
                     </tr>
                     <tr class="nameRow">
                         <th>이름</th>
                         <td><input type="text" name="name"/></td>
+                        <td class="">한글 3~4자</td>
                     </tr>
                     <tr class="emailRow">
                         <th>이메일</th>
                         <td><input type="email" name="email"/></td>
+                        <td class="">올바른 이메일 형식</td>
                     </tr>
                 </table>
                 <input type="submit" value="완료" />
