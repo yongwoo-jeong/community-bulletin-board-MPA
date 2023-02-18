@@ -42,6 +42,5 @@
 <footer></footer>
 <br/>
 <script src="./js/navigation.js"></script>
-<script src="./js/home.js"></script>
 </body>
 </html>

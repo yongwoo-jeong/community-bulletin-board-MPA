@@ -23,6 +23,8 @@
             </jsp:include>
         </div>
     </main>
+
+<%--TODO 가입 / 수정 URL 가져와서 다른 자바스크립트 파일 가져오기--%>
 <script src="js/signUp.js" type="module"></script>
 <script src="js/navigation.js"></script>
 </body>

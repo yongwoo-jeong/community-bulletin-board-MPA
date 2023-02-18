@@ -1,4 +1,4 @@
-package version.mpa.bbs.enums;
+package version.mpa.bbs.controller;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -16,15 +16,14 @@ public enum URL {
 	EDIT_PROFILE("/edit-profile", "/editProfile.jsp"),
 	ERROR("/error", "/error.jsp");
 
+	/**
+	 * URL 주소
+	 */
 	private final String urlPath;
-	private final String viewPath;
 
-//	public static EnumMap<URLs,String> getUrlMap(){
-//		EnumMap<URLs, String> map = new EnumMap<>(URLs.class);
-//		for (URLs constant : URLs.values()){
-//			map.put(constant, constant.getUrl());
-//		}
-//		return map;
-//	}
+	/**
+	 * view path
+	 */
+	private final String viewPath;
 
 }

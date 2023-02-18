@@ -7,9 +7,8 @@ import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import org.mindrot.jbcrypt.BCrypt;
-import version.mpa.bbs.enums.LoginError;
-import version.mpa.bbs.enums.SignUpError;
-import version.mpa.bbs.enums.URL;
+import version.mpa.bbs.error.LoginError;
+import version.mpa.bbs.error.SignUpError;
 import version.mpa.bbs.service.UserService;
 import version.mpa.bbs.util.StringUtil;
 import version.mpa.bbs.vo.UserVO;
@@ -35,7 +34,7 @@ public class UserController {
 	/**
 	 * 로그인 POST 요청 처리
 	 * TODO 로그인 후 원래 있던 페이지로 이동
-	 * TODO 쿠키가 있어도 로그인 창 뜨는것 수정
+	 * TODO 로그인 후 새로고침
 	 * @param request HttpServletRequest
 	 * @param response HttpServletResponse
 	 * @throws IOException
@@ -138,16 +137,17 @@ public class UserController {
 
 	/**
 	 * 로그아웃 컨트롤러
+	 * TODO 쿠키 만료된 후 페이지 새로고침
 	 * @param request
 	 * @param response
 	 */
 	protected void logOutController(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		Cookie cookie = new Cookie("loginAccount", null);
+		// 로그인 종료
 		cookie.setMaxAge(0);
 		response.addCookie(cookie);
 		request.getRequestDispatcher(URL.HOME.getViewPath()).forward(request, response);
-
 	}
 
 }
