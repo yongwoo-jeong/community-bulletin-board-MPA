@@ -26,5 +26,4 @@ public class UserService {
 	public void insertUser(UserVO newUser) throws IOException {
 		new UserDAO().insertNewUser(newUser);
 	}
-
 }

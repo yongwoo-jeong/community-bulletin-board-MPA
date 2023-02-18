@@ -7,6 +7,9 @@ import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import org.mindrot.jbcrypt.BCrypt;
+import version.mpa.bbs.enums.LoginError;
+import version.mpa.bbs.enums.SignUpError;
+import version.mpa.bbs.enums.URL;
 import version.mpa.bbs.service.UserService;
 import version.mpa.bbs.util.StringUtil;
 import version.mpa.bbs.vo.UserVO;
@@ -32,6 +35,7 @@ public class UserController {
 	/**
 	 * 로그인 POST 요청 처리
 	 * TODO 로그인 후 원래 있던 페이지로 이동
+	 * TODO 쿠키가 있어도 로그인 창 뜨는것 수정
 	 * @param request HttpServletRequest
 	 * @param response HttpServletResponse
 	 * @throws IOException
@@ -47,7 +51,7 @@ public class UserController {
 			response.sendError(400);
 			return;
 		}
-		Cookie idCookie = new Cookie("accountId", targetUser.getAccount());
+		Cookie idCookie = new Cookie("loginAccount", targetUser.getAccount());
 		idCookie.setMaxAge(2 * 60 * 60);
 		response.addCookie(idCookie);
 		request.getRequestDispatcher(URL.HOME.getViewPath()).forward(request,response);
@@ -110,7 +114,40 @@ public class UserController {
 
 		UserVO newUser = UserVO.builder().account(account).password(BCrypt.hashpw(password, BCrypt.gensalt())).userName(name).email(email).build();
 		new UserService().insertUser(newUser);
-		request.getRequestDispatcher("/signUp.jsp").forward(request, response);
+		request.getRequestDispatcher(URL.HOME.getViewPath()).forward(request, response);
+	}
+
+	/**
+	 * 프로필 수정 페이지 GET 요청 컨트롤러
+	 * 비밀번호 확인 후 처리
+	 * @param request
+	 * @param response
+	 */
+	protected void getEditProfileController(HttpServletRequest request, HttpServletResponse response)
+			throws IOException, ServletException {
+		String userAccount = request.getParameter("id");
+		String inputPassword = request.getParameter("password");
+		UserVO targetUser = new UserService().selectUser(userAccount);
+		if (!BCrypt.checkpw(inputPassword, targetUser.getPassword())){
+			request.setAttribute(errorMessage, LoginError.INCORRECT_PASSWORD.getErrorMessage());
+			response.sendError(400);
+			return;
+		}
+		request.getRequestDispatcher(URL.EDIT_PROFILE.getViewPath()).forward(request,response);
+	}
+
+	/**
+	 * 로그아웃 컨트롤러
+	 * @param request
+	 * @param response
+	 */
+	protected void logOutController(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		Cookie cookie = new Cookie("loginAccount", null);
+		cookie.setMaxAge(0);
+		response.addCookie(cookie);
+		request.getRequestDispatcher(URL.HOME.getViewPath()).forward(request, response);
+
 	}
 
 }

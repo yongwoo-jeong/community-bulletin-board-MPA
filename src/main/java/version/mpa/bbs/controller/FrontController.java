@@ -8,12 +8,13 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import lombok.AllArgsConstructor;
+import version.mpa.bbs.enums.URL;
 
 /**
  * Servlet dispatcher getting all the Request from client.
  *
  */
-@WebServlet(urlPatterns = {"/home", "/login", "/signup"} )
+@WebServlet(urlPatterns = {"/home", "/login", "/logout", "/signup", "/edit-profile"} )
 @AllArgsConstructor
 public class FrontController extends HttpServlet {
 
@@ -32,9 +33,14 @@ public class FrontController extends HttpServlet {
 			if (Objects.equals(url, URL.SIGN_UP.getUrlPath())){
 				new UserController().getSignUpController(request, response);
 			}
-
+			if (Objects.equals(url, URL.LOG_OUT.getUrlPath())){
+				new UserController().logOutController(request, response);
+			}
+			if (Objects.equals(url, URL.EDIT_PROFILE.getUrlPath())){
+				new UserController().getEditProfileController(request, response);
+			}
 		} catch (ServletException | IOException error) {
-			request.setAttribute("error", error);
+			request.setAttribute("errorMessage", error);
 		}
 	}
 
@@ -68,6 +74,4 @@ public class FrontController extends HttpServlet {
 		request.getRequestDispatcher("/articleDetail.jsp").forward(request, response);
 
 	}
-
-
 }

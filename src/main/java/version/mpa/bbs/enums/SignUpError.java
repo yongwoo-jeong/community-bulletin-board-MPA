@@ -1,4 +1,4 @@
-package version.mpa.bbs.controller;
+package version.mpa.bbs.enums;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
