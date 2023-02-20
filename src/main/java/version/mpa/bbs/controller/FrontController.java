@@ -11,6 +11,7 @@ import lombok.AllArgsConstructor;
 import version.mpa.bbs.commands.Command;
 import version.mpa.bbs.commands.HomeCommand;
 import version.mpa.bbs.commands.LoginCommand;
+import version.mpa.bbs.commands.LoginFormCommand;
 import version.mpa.bbs.commands.SignupCommand;
 
 /**
@@ -20,15 +21,32 @@ import version.mpa.bbs.commands.SignupCommand;
 @AllArgsConstructor
 public class FrontController extends HttpServlet {
 
-
-	private Command commandMapping(HttpServletRequest request) {
+	/**
+	 * GET request uri 매핑
+	 * @param request
+	 * @return
+	 */
+	private Command getMapping(HttpServletRequest request) {
 		String uri = request.getRequestURI();
 		if (Objects.equals(uri, URL.HOME.getUrlPath())) {
 			return new HomeCommand();
 		} else if (Objects.equals(uri, URL.SIGN_UP.getUrlPath())) {
 			return new SignupCommand();
 		} else if (Objects.equals(uri, URL.LOG_IN.getUrlPath())) {
+			return new LoginFormCommand();
+		}
+		return null;
+	}
+
+	/**
+	 * POST request uri 매핑
+	 */
+	private Command postMapping(HttpServletRequest request){
+		String uri = request.getRequestURI();
+		if (Objects.equals(uri, URL.LOG_IN.getUrlPath())){
 			return new LoginCommand();
+		} else if (Objects.equals(uri, URL.SIGN_UP)) {
+			return new SignupCommand();
 		}
 		return null;
 	}
@@ -40,7 +58,7 @@ public class FrontController extends HttpServlet {
 	@Override
 	public void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		Command action = commandMapping(request);
+		Command action = getMapping(request);
 		if (action == null) {
 			throw new RuntimeException("Invalid request");
 		} else {

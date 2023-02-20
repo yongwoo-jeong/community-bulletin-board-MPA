@@ -7,15 +7,16 @@ import javax.servlet.http.HttpServletResponse;
 import version.mpa.bbs.controller.URL;
 
 /**
- * 인덱스 페이지 뷰 커맨드
+ * 로그인 GET 커맨드
  */
-public class HomeCommand implements Command {
+public class LoginFormCommand implements Command {
+
 	/**
-	 * 메인화면(/) 컨트롤러 메서드
+	 * 로그인 화면 리다이렉트
 	 */
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response)
 			throws IOException, ServletException {
-		request.getRequestDispatcher(URL.HOME.getViewPath()).forward(request,response);
+		request.getRequestDispatcher(URL.LOG_IN.getViewPath()).forward(request,response);
 	}
 }

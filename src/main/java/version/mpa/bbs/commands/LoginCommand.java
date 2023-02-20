@@ -12,9 +12,10 @@ import version.mpa.bbs.service.UserService;
 import version.mpa.bbs.vo.UserVO;
 
 /**
- * 로그인 페이지 GET 요청 처리
+ * 로그인 처리 커맨드
  */
 public class LoginCommand implements Command {
+
 	/**
 	 * 로그인 POST 요청 처리
 	 * TODO 로그인 후 원래 있던 페이지로 이동
@@ -40,6 +41,7 @@ public class LoginCommand implements Command {
 		Cookie idCookie = new Cookie("loginAccount", targetUser.getAccount());
 		idCookie.setMaxAge(2 * 60 * 60);
 		response.addCookie(idCookie);
-		request.getRequestDispatcher(URL.HOME.getViewPath()).forward(request, response);
+
+		response.sendRedirect(URL.HOME.getUrlPath());
 	}
 }

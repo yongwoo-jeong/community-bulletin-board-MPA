@@ -13,11 +13,18 @@ import version.mpa.bbs.util.StringUtil;
 import version.mpa.bbs.vo.UserVO;
 
 /**
- * 회원가입 POST 요청 처리
+ * 회원가입 프로세스 처리 (POST)
  * TODO 반복되는 ERROR_MESSAGE 어떻게 처리?
  */
 public class SignupCommand implements Command {
 
+	/**
+	 * 회원가입에 필요한 정보 검증 서비스로 넘겨주기
+	 * @param request HttpServletRequest
+	 * @param response HttpServletResponse
+	 * @throws ServletException
+	 * @throws IOException
+	 */
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
