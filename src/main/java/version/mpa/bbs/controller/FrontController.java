@@ -8,41 +8,43 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import lombok.AllArgsConstructor;
+import version.mpa.bbs.commands.Command;
+import version.mpa.bbs.commands.HomeCommand;
+import version.mpa.bbs.commands.LoginCommand;
+import version.mpa.bbs.commands.SignupCommand;
 
 /**
  * 디스패쳐 서블릿
- *
  */
-@WebServlet(urlPatterns = {"/home", "/login", "/logout", "/signup", "/edit-profile"} )
+@WebServlet(urlPatterns = {"/home", "/login", "/logout", "/signup", "/edit-profile"})
 @AllArgsConstructor
 public class FrontController extends HttpServlet {
+
+
+	private Command commandMapping(HttpServletRequest request) {
+		String uri = request.getRequestURI();
+		if (Objects.equals(uri, URL.HOME.getUrlPath())) {
+			return new HomeCommand();
+		} else if (Objects.equals(uri, URL.SIGN_UP.getUrlPath())) {
+			return new SignupCommand();
+		} else if (Objects.equals(uri, URL.LOG_IN.getUrlPath())) {
+			return new LoginCommand();
+		}
+		return null;
+	}
 
 	/**
 	 * GET 요청과 컨트롤러 메서드 매칭
 	 * TODO 매칭 방법, 예외처리.
 	 */
 	@Override
-	public void doGet(HttpServletRequest request, HttpServletResponse response){
-		String url = request.getRequestURI();
-
-		try {
-			if (Objects.equals(url, URL.HOME.getUrlPath())) {
-				homeController(request, response);
-			}
-			if (Objects.equals(url, URL.LOG_IN.getUrlPath())){
-				new UserController().getLoginController(request, response);
-			}
-			if (Objects.equals(url, URL.SIGN_UP.getUrlPath())){
-				new UserController().getSignUpController(request, response);
-			}
-			if (Objects.equals(url, URL.LOG_OUT.getUrlPath())){
-				new UserController().logOutController(request, response);
-			}
-			if (Objects.equals(url, URL.EDIT_PROFILE.getUrlPath())){
-				new UserController().getEditProfileController(request, response);
-			}
-		} catch (ServletException | IOException error) {
-			request.setAttribute("errorMessage", error);
+	public void doGet(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		Command action = commandMapping(request);
+		if (action == null) {
+			throw new RuntimeException("Invalid request");
+		} else {
+			action.execute(request, response);
 		}
 	}
 
@@ -50,26 +52,7 @@ public class FrontController extends HttpServlet {
 	 * 포스트 요청 컨트롤러 매핑
 	 */
 	@Override
-	public void doPost(HttpServletRequest request, HttpServletResponse response){
-		String url = request.getRequestURI();
-		try{
-			if (Objects.equals(url, URL.SIGN_UP.getUrlPath())){
-				new UserController().postSignUpController(request, response);
-			}
-			if (Objects.equals(url, URL.LOG_IN.getUrlPath())){
-				new UserController().postLoginController(request, response);
-			}
-		} catch (ServletException | IOException error) {
-			request.setAttribute("errorMessage", error);
-		}
+	public void doPost(HttpServletRequest request, HttpServletResponse response) {
+//
 	}
-
-	/**
-	 * 메인화면(/) 컨트롤러 메서드
-	 */
-	private void homeController(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
-		request.getRequestDispatcher(URL.HOME.getViewPath()).forward(request, response);
-	}
-
 }
