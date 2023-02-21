@@ -4,10 +4,10 @@
 <nav>
     <div>
         <div>
-            <a class="nav__anchor" href="/home">홈</a>
+            <a class="nav__anchor" href=<%=ViewUtil.getUrls().get("HOME")%>>홈</a>
         </div>
         <div>
-            <a class="nav__anchor" href="/notice">공지사항</a>
+            <a class="nav__anchor" href=<%=ViewUtil.getUrls().get("NOTICE")%>>공지사항</a>
         </div>
         <div>
             <a class="nav__anchor" href="/general">자유게시판</a>

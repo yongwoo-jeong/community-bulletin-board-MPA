@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletResponse;
 import lombok.AllArgsConstructor;
 import version.mpa.bbs.commands.Command;
 import version.mpa.bbs.commands.HomeCommand;
+import version.mpa.bbs.commands.article.NoticeCommand;
 import version.mpa.bbs.commands.user.LoginCommand;
 import version.mpa.bbs.commands.user.LoginFormCommand;
 import version.mpa.bbs.commands.user.SignupCommand;
@@ -18,7 +19,7 @@ import version.mpa.bbs.commands.user.SignupFormCommand;
 /**
  * 디스패쳐 서블릿
  */
-@WebServlet(urlPatterns = {"/home", "/login", "/logout", "/signup", "/edit-profile"})
+@WebServlet(urlPatterns = {"/home", "/login", "/logout", "/signup", "/edit-profile", "/notice"})
 @AllArgsConstructor
 public class FrontController extends HttpServlet {
 
@@ -35,6 +36,8 @@ public class FrontController extends HttpServlet {
 			return new SignupFormCommand();
 		} else if (Objects.equals(uri, URL.LOG_IN.getUrlPath())) {
 			return new LoginFormCommand();
+		} else if (Objects.equals(uri, URL.NOTICE.getUrlPath())) {
+			return new NoticeCommand();
 		}
 		return null;
 	}

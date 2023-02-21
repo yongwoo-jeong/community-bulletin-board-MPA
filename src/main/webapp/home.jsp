@@ -1,3 +1,4 @@
+<%@ page import="version.mpa.bbs.util.ViewUtil" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
          pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -9,15 +10,13 @@
     <link rel="stylesheet" href="${pageContext.request.contextPath}/css/home.css" type="text/css">
 </head>
 <body>
-<jsp:include page="component/navigation.jsp">
-    <jsp:param name="" value=""/>
-</jsp:include>
+<jsp:include page="component/navigation.jsp"></jsp:include>
 <br/>
 <main class="board mx-lg-2">
 <%--    <% String headerTitle = "홈페이지";%>--%>
    <div class="row">
        <section class="board__notice col col-lg">
-           <div class="section__header bg-secondary text-white h3 ps-2">공지사항</div>
+           <div onclick="location.href='<%=ViewUtil.getUrls().get("NOTICE")%>'" class="section__header bg-secondary text-white h3 ps-2">공지사항</div>
            <div class="article-list__container">
                <table>
                    <tr>
