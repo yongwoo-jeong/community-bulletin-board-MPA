@@ -1,4 +1,4 @@
-package version.mpa.bbs.commands;
+package version.mpa.bbs.commands.user;
 
 import java.io.IOException;
 import javax.servlet.ServletException;
@@ -6,6 +6,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import org.mindrot.jbcrypt.BCrypt;
+import version.mpa.bbs.commands.Command;
 import version.mpa.bbs.controller.URL;
 import version.mpa.bbs.error.LoginError;
 import version.mpa.bbs.service.UserService;

@@ -1,12 +1,4 @@
 
-<
-build.gradle,f/0/f07866736216be0ee2aba49e392191aeae700a35
-L
-src/main/webapp/css/home.css,f/c/fc387d32009214d2c86c1b60a998aff5cd9d07de
-M
-src/main/webapp/css/index.css,7/8/7839e85e628b9e7f25e4d84a018e9af3b9754b15
-M
-src/main/webapp/css/reset.css,a/d/ad8a4501ee6af1573158bfc89e70146dca54184c
 R
 "src/main/webapp/css/navigation.css,8/8/8857ad4397e87a3607ffd318623e3a1860bf1845
 \

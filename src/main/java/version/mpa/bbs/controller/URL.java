@@ -37,7 +37,9 @@ public enum URL {
 	/**
 	 * ONLY GET
 	 */
-	ERROR("/error", "/error.jsp");
+	ERROR("/error", "/error.jsp"),
+
+	NOTICE("/notice", "/notice.jsp");
 
 	/**
 	 * URL 주소

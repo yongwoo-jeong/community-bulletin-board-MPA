@@ -10,10 +10,10 @@ import javax.servlet.http.HttpServletResponse;
 import lombok.AllArgsConstructor;
 import version.mpa.bbs.commands.Command;
 import version.mpa.bbs.commands.HomeCommand;
-import version.mpa.bbs.commands.LoginCommand;
-import version.mpa.bbs.commands.LoginFormCommand;
-import version.mpa.bbs.commands.SignupCommand;
-import version.mpa.bbs.commands.SignupFormCommand;
+import version.mpa.bbs.commands.user.LoginCommand;
+import version.mpa.bbs.commands.user.LoginFormCommand;
+import version.mpa.bbs.commands.user.SignupCommand;
+import version.mpa.bbs.commands.user.SignupFormCommand;
 
 /**
  * 디스패쳐 서블릿
