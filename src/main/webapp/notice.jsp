@@ -1,4 +1,5 @@
 <%@ page import="java.net.URLEncoder" %>
+<%@ page import="version.mpa.bbs.util.ViewUtil" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
@@ -32,6 +33,8 @@
     </tr>
   </table>
 </main>
+<div class="pagination"></div>
+<div class="border-1" role="button" onclick="location.href='<%=ViewUtil.getUrls().get("NOTICE")%><%=ViewUtil.getActionUri().get("CREATE")%>'" >글쓰기</div>
 <script src="js/navigation.js"></script>
 </body>
 </html>

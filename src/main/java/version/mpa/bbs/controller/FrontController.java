@@ -11,6 +11,7 @@ import lombok.AllArgsConstructor;
 import version.mpa.bbs.commands.Command;
 import version.mpa.bbs.commands.HomeCommand;
 import version.mpa.bbs.commands.article.NoticeCommand;
+import version.mpa.bbs.commands.article.NoticeCreateCommand;
 import version.mpa.bbs.commands.user.LoginCommand;
 import version.mpa.bbs.commands.user.LoginFormCommand;
 import version.mpa.bbs.commands.user.SignupCommand;
@@ -19,7 +20,7 @@ import version.mpa.bbs.commands.user.SignupFormCommand;
 /**
  * 디스패쳐 서블릿
  */
-@WebServlet(urlPatterns = {"/home", "/login", "/logout", "/signup", "/edit-profile", "/notice"})
+@WebServlet(urlPatterns = {"/home", "/login", "/logout", "/signup", "/edit-profile", "/notice", "*.new"})
 @AllArgsConstructor
 public class FrontController extends HttpServlet {
 
@@ -30,6 +31,7 @@ public class FrontController extends HttpServlet {
 	 */
 	private Command getMapping(HttpServletRequest request) {
 		String uri = request.getRequestURI();
+		System.out.println(uri);
 		if (Objects.equals(uri, URL.HOME.getUrlPath())) {
 			return new HomeCommand();
 		} else if (Objects.equals(uri, URL.SIGN_UP.getUrlPath())) {
@@ -38,6 +40,8 @@ public class FrontController extends HttpServlet {
 			return new LoginFormCommand();
 		} else if (Objects.equals(uri, URL.NOTICE.getUrlPath())) {
 			return new NoticeCommand();
+		} else if (Objects.equals(uri, URL.NOTICE.getUrlPath()+ UrlAction.CREATE.getActionUri())) {
+			return new NoticeCreateCommand();
 		}
 		return null;
 	}
