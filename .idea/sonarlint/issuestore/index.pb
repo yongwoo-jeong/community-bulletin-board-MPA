@@ -37,8 +37,6 @@ m
 =src/main/java/version/mpa/bbs/mapperInterface/UserMapper.java,5/1/516c08ca780788d74c657e18a88eb697f837e54e
 T
 $src/main/webapp/component/header.jsp,7/5/75b463b481d97a9508dbef7b1438d83ff9e90308
-X
-(src/main/webapp/component/navigation.jsp,3/f/3f09333cead792786f7941cbe777b144fe5c7e13
 a
 1src/main/java/version/mpa/bbs/dao/ArticleDAO.java,3/d/3de07487b9e8ea99e8d3a9707c844f9f878253ca
 J

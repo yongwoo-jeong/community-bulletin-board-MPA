@@ -2,9 +2,9 @@ package version.mpa.bbs.commands;
 
 import java.io.IOException;
 import javax.servlet.ServletException;
-import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import org.mindrot.jbcrypt.BCrypt;
 import version.mpa.bbs.controller.URL;
 import version.mpa.bbs.error.LoginError;
@@ -38,10 +38,9 @@ public class LoginCommand implements Command {
 			response.sendError(400);
 			return;
 		}
-		Cookie idCookie = new Cookie("loginAccount", targetUser.getAccount());
-		idCookie.setMaxAge(2 * 60 * 60);
-		response.addCookie(idCookie);
-
-		response.sendRedirect(URL.HOME.getUrlPath());
+		HttpSession loginSession = request.getSession();
+		loginSession.setAttribute("loginAccount", targetUser.getAccount());
+		loginSession.setAttribute("loginUsername", targetUser.getUserName());
+		request.getRequestDispatcher(URL.HOME.getViewPath()).forward(request,response);
 	}
 }

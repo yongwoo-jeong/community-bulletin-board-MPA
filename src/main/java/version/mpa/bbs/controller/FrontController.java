@@ -13,6 +13,7 @@ import version.mpa.bbs.commands.HomeCommand;
 import version.mpa.bbs.commands.LoginCommand;
 import version.mpa.bbs.commands.LoginFormCommand;
 import version.mpa.bbs.commands.SignupCommand;
+import version.mpa.bbs.commands.SignupFormCommand;
 
 /**
  * 디스패쳐 서블릿
@@ -31,7 +32,7 @@ public class FrontController extends HttpServlet {
 		if (Objects.equals(uri, URL.HOME.getUrlPath())) {
 			return new HomeCommand();
 		} else if (Objects.equals(uri, URL.SIGN_UP.getUrlPath())) {
-			return new SignupCommand();
+			return new SignupFormCommand();
 		} else if (Objects.equals(uri, URL.LOG_IN.getUrlPath())) {
 			return new LoginFormCommand();
 		}
@@ -45,7 +46,7 @@ public class FrontController extends HttpServlet {
 		String uri = request.getRequestURI();
 		if (Objects.equals(uri, URL.LOG_IN.getUrlPath())){
 			return new LoginCommand();
-		} else if (Objects.equals(uri, URL.SIGN_UP)) {
+		} else if (Objects.equals(uri, URL.SIGN_UP.getUrlPath())) {
 			return new SignupCommand();
 		}
 		return null;
@@ -70,7 +71,13 @@ public class FrontController extends HttpServlet {
 	 * 포스트 요청 컨트롤러 매핑
 	 */
 	@Override
-	public void doPost(HttpServletRequest request, HttpServletResponse response) {
-//
+	public void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		Command action = postMapping(request);
+		if (action == null) {
+			throw new RuntimeException("Invalid request");
+		} else {
+			action.execute(request, response);
+		}
 	}
 }
