@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ page import="java.net.URLDecoder" %>
+<%@ page import="version.mpa.bbs.util.StringUtil" %>
+<%@ page import="version.mpa.bbs.util.ViewUtil" %>
 
 <%--<title><%=URLDecoder.decode(request.getParameter("titleValue"), "UTF-8")%></title>--%>
 <nav>
@@ -21,14 +23,14 @@
         <div>
             <%  String loggedInUser = (String) session.getAttribute("loginUsername");
                 if (loggedInUser==null){%>
-                    <a class="nav__anchor" href="/login">로그인</a>
-                    <a class="nav__anchor" href="/signup">회원가입</a>
+                    <a class="nav__anchor" href=<%=ViewUtil.getUrls().get("LOG_IN")%>>로그인</a>
+                    <a class="nav__anchor" href=<%=ViewUtil.getUrls().get("SIGN_UP")%>>회원가입</a>
                 <% } else { %>
                     <a>환영합니다 <%=loggedInUser%>님</a>
                     <a>|</a>
-                    <a href="/edit-profile?id=<%=loggedInUser%>">프로필 수정</a>
+                    <a href="<%=ViewUtil.getUrls().get("EDIT_PROFILE")%>?id=<%=loggedInUser%>">프로필 수정</a>
                     <a>|</a>
-                    <a class="nav__anchor" href="/logout?id=<%=loggedInUser%>">로그아웃</a>
+                    <a class="nav__anchor" href="<%=ViewUtil.getUrls().get("LOG_OUT")%>?id=<%=loggedInUser%>">로그아웃</a>
             <%}%>
         </div>
     </div>

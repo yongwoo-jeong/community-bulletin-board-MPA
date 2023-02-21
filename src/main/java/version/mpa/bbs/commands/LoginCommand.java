@@ -41,6 +41,8 @@ public class LoginCommand implements Command {
 		HttpSession loginSession = request.getSession();
 		loginSession.setAttribute("loginAccount", targetUser.getAccount());
 		loginSession.setAttribute("loginUsername", targetUser.getUserName());
+		// 세션 유지 4시간
+		loginSession.setMaxInactiveInterval(60*60*4);
 		request.getRequestDispatcher(URL.HOME.getViewPath()).forward(request,response);
 	}
 }

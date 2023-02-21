@@ -1,11 +1,10 @@
-<%@ page import="java.net.URLEncoder" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
          pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
     <jsp:include page="component/title.jsp">
-        <jsp:param name="titleValue" value='<%=URLEncoder.encode("종합 게시판 - 홈", "UTF-8") %>' />
+        <jsp:param name="titleValue" value="종합 게시판 - 홈" />
     </jsp:include>
     <link rel="stylesheet" href="${pageContext.request.contextPath}/css/home.css" type="text/css">
 </head>

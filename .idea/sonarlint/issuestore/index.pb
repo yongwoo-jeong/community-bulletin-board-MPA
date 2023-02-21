@@ -35,8 +35,6 @@ p
 @src/main/java/version/mpa/bbs/mapperInterface/ArticleMapper.java,2/3/236c8af678b8dadc5ed02f1630762836fdfef787
 m
 =src/main/java/version/mpa/bbs/mapperInterface/UserMapper.java,5/1/516c08ca780788d74c657e18a88eb697f837e54e
-T
-$src/main/webapp/component/header.jsp,7/5/75b463b481d97a9508dbef7b1438d83ff9e90308
 a
 1src/main/java/version/mpa/bbs/dao/ArticleDAO.java,3/d/3de07487b9e8ea99e8d3a9707c844f9f878253ca
 J
@@ -47,7 +45,3 @@ O
 src/main/webapp/WEB-INF/web.xml,2/e/2e22b6edd746fa3dc40ad7276c87c8d87d72a392
 f
 6src/main/java/version/mpa/bbs/service/UserService.java,d/7/d7d64c1e2dbe9e8ccd14cccafe159f22c221cbe2
-H
-src/main/webapp/home.jsp,6/8/6853166b9553bb500860233db274f93560c021c5
-S
-#src/main/webapp/component/title.jsp,6/8/687e7f6403cd87b0578b6de2e463769ac0432cdd
