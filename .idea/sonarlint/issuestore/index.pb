@@ -13,17 +13,7 @@ P
  src/main/webapp/js/navigation.js,b/e/be3dde0a3efd09a62c4afbfc0c69f81c6f3dd95e
 L
 src/main/webapp/js/signUp.js,d/0/d066657de05376e4ec532fa3fb72150bd87c70ef
-^
-.src/main/java/version/mpa/bbs/dao/UserDAO.java,b/0/b0b9448c8605ea7f03a95ecfcc02721ac10b2786
 c
 3src/main/java/version/mpa/bbs/error/LoginError.java,5/3/53b8778ac14e4d0ec7bc3ba8abfcba6b8551b009
 d
 4src/main/java/version/mpa/bbs/error/SignUpError.java,7/6/76b5f72f72fa64526031f2c014df0c96b901dfa0
-p
-@src/main/java/version/mpa/bbs/mapperInterface/ArticleMapper.java,2/3/236c8af678b8dadc5ed02f1630762836fdfef787
-m
-=src/main/java/version/mpa/bbs/mapperInterface/UserMapper.java,5/1/516c08ca780788d74c657e18a88eb697f837e54e
-a
-1src/main/java/version/mpa/bbs/dao/ArticleDAO.java,3/d/3de07487b9e8ea99e8d3a9707c844f9f878253ca
-f
-6src/main/java/version/mpa/bbs/service/UserService.java,d/7/d7d64c1e2dbe9e8ccd14cccafe159f22c221cbe2

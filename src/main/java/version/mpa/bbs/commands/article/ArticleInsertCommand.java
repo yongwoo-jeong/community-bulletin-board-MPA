@@ -13,6 +13,9 @@ import version.mpa.bbs.commands.Command;
 import version.mpa.bbs.util.StringUtil;
 import version.mpa.bbs.vo.FileVO;
 
+/**
+ * POST 새 게시글 INSERT
+ */
 public class ArticleInsertCommand implements Command {
 
 	@Override
@@ -33,16 +36,10 @@ public class ArticleInsertCommand implements Command {
 			String fileNameOriginal = multipartRequest.getOriginalFileName(file);
 			if (fileNameOriginal == null)
 				continue;
-			System.out.println(file);
-			System.out.println(fileNameOnServer);
-			System.out.println(fileNameOriginal);
 			String fileExtension = fileNameOriginal.substring(fileNameOriginal.lastIndexOf(".") + 1);
-			File f = multipartRequest.getFile(file);
-
-			FileVO newFile = FileVO.builder().nameOnServer(fileNameOnServer).nameOriginal(fileNameOriginal).size(
-							(int) f.length()).path(fileDirectory)
+			Integer fileSize = (int) multipartRequest.getFile(file).length();
+			FileVO newFile = FileVO.builder().nameOnServer(fileNameOnServer).nameOriginal(fileNameOriginal).size(fileSize).path(fileDirectory)
 					.extension(fileExtension).build();
-			System.out.println("file build OK");
 		}
 	}
 }

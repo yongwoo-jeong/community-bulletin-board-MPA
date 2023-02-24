@@ -10,10 +10,6 @@ import javax.servlet.http.HttpServletRequest;
  * 문자열 유틸리티
  */
 public class StringUtil {
-	/**
-	 * 인스턴스 생성 방지
-	 */
-	public StringUtil(){}
 
 	/**
 	 * application.property 값 획득

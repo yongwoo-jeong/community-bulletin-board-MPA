@@ -17,6 +17,10 @@ public interface ArticleMapper {
 	 * @param board 게시판 종류. String substitute(${}) 를 사용하기 때문에 서비스 내에서 정해진 값만 전달
 	 * @return 게시글 리스트
 	 */
-	public List<ArticleVO> selectSearchArticles(@Param("board") String board, @Param("dbLimitOffset") Integer dbLimitOffset, @Param("searchCriteria")
+	List<ArticleVO> selectSearchArticles(@Param("board") String board, @Param("dbLimitOffset") Integer dbLimitOffset, @Param("searchCriteria")
 			SearchCriteriaVO searchCriteria);
+
+	void insertArticle(@Param("board") String board, @Param("article") ArticleVO articleVO);
+
+
 }

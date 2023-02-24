@@ -44,11 +44,13 @@ public class ArticleVO {
 
 	/**
 	 * 게시글 생성일
+	 * NOW()
 	 */
 	private String created;
 
 	/**
 	 * 게시글 수정일
+	 * NOW()
 	 */
 	private String updated;
 
