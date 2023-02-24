@@ -34,7 +34,7 @@
   </table>
 </main>
 <div class="pagination"></div>
-<div class="border-1" role="button" onclick="location.href='<%=ViewUtil.getUrls().get("NOTICE")%><%=ViewUtil.getActionUri().get("CREATE")%>'" >글쓰기</div>
+<div class="border-1" role="button" onclick="location.href='<%=ViewUtil.getUrls().get("NOTICE")%><%=ViewUtil.getActionUri().get("NEW")%>'" >글쓰기</div>
 <script src="js/navigation.js"></script>
 </body>
 </html>

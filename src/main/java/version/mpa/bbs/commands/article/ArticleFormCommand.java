@@ -6,7 +6,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import version.mpa.bbs.commands.Command;
 
-public class NoticeCreateCommand implements Command {
+public class ArticleFormCommand implements Command {
 
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response)

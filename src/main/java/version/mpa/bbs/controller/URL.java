@@ -39,6 +39,9 @@ public enum URL {
 	 */
 	ERROR("/error", "/error.jsp"),
 
+	/**
+	 * ONLY GET
+	 */
 	NOTICE("/notice", "/notice.jsp");
 
 	/**

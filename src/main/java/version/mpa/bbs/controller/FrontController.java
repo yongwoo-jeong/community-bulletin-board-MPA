@@ -10,8 +10,9 @@ import javax.servlet.http.HttpServletResponse;
 import lombok.AllArgsConstructor;
 import version.mpa.bbs.commands.Command;
 import version.mpa.bbs.commands.HomeCommand;
+import version.mpa.bbs.commands.article.ArticleFormCommand;
+import version.mpa.bbs.commands.article.ArticleInsertCommand;
 import version.mpa.bbs.commands.article.NoticeCommand;
-import version.mpa.bbs.commands.article.NoticeCreateCommand;
 import version.mpa.bbs.commands.user.LoginCommand;
 import version.mpa.bbs.commands.user.LoginFormCommand;
 import version.mpa.bbs.commands.user.SignupCommand;
@@ -24,12 +25,14 @@ import version.mpa.bbs.commands.user.SignupFormCommand;
 @AllArgsConstructor
 public class FrontController extends HttpServlet {
 
+
+
 	/**
 	 * GET request uri 매핑
 	 * @param request
 	 * @return
 	 */
-	private Command getMapping(HttpServletRequest request) {
+	private Command getMapping(HttpServletRequest request) throws IOException {
 		String uri = request.getRequestURI();
 		System.out.println(uri);
 		if (Objects.equals(uri, URL.HOME.getUrlPath())) {
@@ -40,8 +43,8 @@ public class FrontController extends HttpServlet {
 			return new LoginFormCommand();
 		} else if (Objects.equals(uri, URL.NOTICE.getUrlPath())) {
 			return new NoticeCommand();
-		} else if (Objects.equals(uri, URL.NOTICE.getUrlPath()+ UrlAction.CREATE.getActionUri())) {
-			return new NoticeCreateCommand();
+		} else if (Objects.equals(uri, URL.NOTICE.getUrlPath()+ URLAction.NEW.getActionUri())) {
+			return new ArticleFormCommand();
 		}
 		return null;
 	}
@@ -55,6 +58,8 @@ public class FrontController extends HttpServlet {
 			return new LoginCommand();
 		} else if (Objects.equals(uri, URL.SIGN_UP.getUrlPath())) {
 			return new SignupCommand();
+		} else if (Objects.equals(uri, URL.NOTICE.getUrlPath()+URLAction.NEW.getActionUri())) {
+			return new ArticleInsertCommand();
 		}
 		return null;
 	}

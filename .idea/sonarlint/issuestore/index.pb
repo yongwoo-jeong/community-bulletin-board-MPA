@@ -25,9 +25,5 @@ m
 =src/main/java/version/mpa/bbs/mapperInterface/UserMapper.java,5/1/516c08ca780788d74c657e18a88eb697f837e54e
 a
 1src/main/java/version/mpa/bbs/dao/ArticleDAO.java,3/d/3de07487b9e8ea99e8d3a9707c844f9f878253ca
-I
-src/main/webapp/error.jsp,c/b/cba3df22242d379bdb72d00919d2e8d49101d1bf
-O
-src/main/webapp/WEB-INF/web.xml,2/e/2e22b6edd746fa3dc40ad7276c87c8d87d72a392
 f
 6src/main/java/version/mpa/bbs/service/UserService.java,d/7/d7d64c1e2dbe9e8ccd14cccafe159f22c221cbe2
