@@ -25,9 +25,9 @@
   <select id="selectSearchArticles" resultType="version.mpa.bbs.vo.ArticleVO">
     SELECT *
     FROM ${board}
-        <include refid="searchCondition">
-          <property name="searchCriteria" value="searchCriteria"/>
-        </include>
+<!--        <include refid="searchCondition">-->
+<!--          <property name="searchCriteria" value="searchCriteria"/>-->
+<!--        </include>-->
     ORDER BY id DESC
     LIMIT #{dbLimitOffset}, 10
   </select>

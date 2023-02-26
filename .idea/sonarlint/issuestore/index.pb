@@ -5,8 +5,6 @@ R
 ,src/main/java/version/mpa/bbs/vo/UserVO.java,c/9/c94d81d08bfe06a794f42bf9b492fef84351ee59
 f
 6src/main/java/version/mpa/bbs/vo/SearchCriteriaVO.java,4/a/4a591f8b15ea1a94d597b2af9c81b65d61484f9e
-]
--src/main/java/version/mpa/bbs/vo/BoardVO.java,9/f/9fdff1c3f22c92c50759975e47c0bc75aed1b716
 \
 ,src/main/java/version/mpa/bbs/vo/RoleVO.java,3/3/33f7a0957d5a7b9ce35fe99c252b72d75580d2e6
 P

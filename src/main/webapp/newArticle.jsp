@@ -1,4 +1,4 @@
-<%@ page import="version.mpa.bbs.util.ViewUtil" %><%--
+<%@ page import="version.mpa.bbs.util.ClientUtil" %><%--
   Created by IntelliJ IDEA.
   User: jyw
   Date: 2023/02/21
@@ -12,7 +12,8 @@
 </head>
 <body>
 <main>
-    <form method="post" enctype="multipart/form-data" action=<%=ViewUtil.getUrls().get("NOTICE")+ViewUtil.getActionUri().get("NEW")%>>
+    <form method="post" enctype="multipart/form-data" action=<%=
+    ClientUtil.getUrls().get("NOTICE")+ ClientUtil.getActionUri().get("NEW")%>>
         <table style="border-collapse: collapse">
             <tr>
                 <th>카테고리*</th>
@@ -30,13 +31,6 @@
                 <th>작성자*</th>
                 <td>
                     <input type="text" name="writer" />
-                </td>
-            </tr>
-            <tr>
-                <th>비밀번호*</th>
-                <td>₩
-                    <input name="password" type="password" placeholder="비밀번호" />
-                    <input name="passwordConfirm" type="password" placeholder="비밀번호 확인" />
                 </td>
             </tr>
             <tr>

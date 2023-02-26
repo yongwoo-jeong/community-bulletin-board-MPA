@@ -1,33 +1,22 @@
 package version.mpa.bbs.service;
 
 import java.io.IOException;
-import java.io.InputStream;
-import org.apache.ibatis.io.Resources;
-import org.apache.ibatis.session.SqlSession;
-import org.apache.ibatis.session.SqlSessionFactory;
-import org.apache.ibatis.session.SqlSessionFactoryBuilder;
-import version.mpa.bbs.mapperInterface.ArticleMapper;
+import version.mpa.bbs.repository.ArticleRepository;
 import version.mpa.bbs.vo.ArticleVO;
 
+/**
+ * 게시글 서비스
+ */
 public class ArticleService {
+
 	/**
-	 * ArticleMapper 리턴해주는 메서드
-	 * @return
+	 * 게시글 검증 후 레포지토리 통해 insert
+	 * @param newArticle
 	 * @throws IOException
 	 */
-	private ArticleMapper loadMapper() throws IOException {
-		ArticleMapper articleMapper;
-		String resource = "mybatis-config.xml";
-		InputStream inputStream = Resources.getResourceAsStream(resource);
-		SqlSessionFactory sessionFactory = new SqlSessionFactoryBuilder().build(inputStream);
-		try (SqlSession session = sessionFactory.openSession(true)) {
-			articleMapper = session.getMapper(ArticleMapper.class);
-		}
-		return articleMapper;
-	}
-
-	public void insertArticle(ArticleVO newArticle) throws IOException {
-		loadMapper().insertArticle("notice_article",newArticle);
+	public void insert(ArticleVO newArticle) throws IOException {
+		// 검증 로직 포함
+		new ArticleRepository().insertArticle(newArticle);
 	}
 
 }

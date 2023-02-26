@@ -1,30 +1,23 @@
 package version.mpa.bbs.util;
 
-import java.io.FileReader;
 import java.io.IOException;
 import java.util.Objects;
 import java.util.Properties;
-import javax.servlet.http.HttpServletRequest;
 
 /**
  * 문자열 유틸리티
  */
 public class StringUtil {
-
 	/**
 	 * application.property 값 획득
 	 * @param propertyKey
 	 * @return
 	 * @throws IOException
 	 */
-	public String getProperties(HttpServletRequest request, String propertyKey) throws IOException {
-		String configFilePath = request.getServletContext().getRealPath("/WEB-INF/application.properties");
-		Properties prop;
-		try (FileReader fileReader = new FileReader(configFilePath)) {
-			prop = new Properties();
-			prop.load(fileReader);
-			return prop.getProperty(propertyKey);
-		}
+	public String getProperties(String propertyKey) throws IOException {
+		Properties props = new Properties();
+		props.load(this.getClass().getClassLoader().getResourceAsStream("application.properties"));
+		return props.getProperty(propertyKey);
 	}
 
 

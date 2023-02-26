@@ -9,7 +9,7 @@ import org.mindrot.jbcrypt.BCrypt;
 import version.mpa.bbs.commands.Command;
 import version.mpa.bbs.controller.URL;
 import version.mpa.bbs.error.SignUpError;
-import version.mpa.bbs.service.UserService;
+import version.mpa.bbs.repository.UserRepository;
 import version.mpa.bbs.util.StringUtil;
 import version.mpa.bbs.vo.UserVO;
 
@@ -40,7 +40,7 @@ public class SignupCommand implements Command {
 			response.sendError(422);
 		}
 		// 아이디 중복 체크
-		if (new UserService().selectUser(account)!=null){
+		if (new UserRepository().selectUser(account)!=null){
 			request.setAttribute(errorMessage, SignUpError.ACCOUNT_EXISTS.getErrorMessage());
 			response.sendError(422);
 		}
@@ -74,7 +74,7 @@ public class SignupCommand implements Command {
 		}
 
 		UserVO newUser = UserVO.builder().account(account).password(BCrypt.hashpw(password, BCrypt.gensalt())).userName(name).email(email).build();
-		new UserService().insertUser(newUser);
+		new UserRepository().insertUser(newUser);
 		request.getRequestDispatcher(URL.HOME.getViewPath()).forward(request, response);
 
 	}

@@ -9,7 +9,7 @@ import org.mindrot.jbcrypt.BCrypt;
 import version.mpa.bbs.commands.Command;
 import version.mpa.bbs.controller.URL;
 import version.mpa.bbs.error.LoginError;
-import version.mpa.bbs.service.UserService;
+import version.mpa.bbs.repository.UserRepository;
 import version.mpa.bbs.vo.UserVO;
 
 /**
@@ -33,7 +33,7 @@ public class LoginCommand implements Command {
 		request.getRequestDispatcher(URL.LOG_IN.getViewPath()).forward(request, response);
 		String userInputAccount = request.getParameter("account");
 		String userInputPassword = request.getParameter("password");
-		UserVO targetUser = new UserService().selectUser(userInputAccount);
+		UserVO targetUser = new UserRepository().selectUser(userInputAccount);
 		if (!BCrypt.checkpw(userInputPassword, targetUser.getPassword())) {
 			request.setAttribute(errorMessage, LoginError.INCORRECT_PASSWORD.getErrorMessage());
 			response.sendError(400);

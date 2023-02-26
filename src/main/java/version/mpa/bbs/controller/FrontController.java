@@ -20,6 +20,7 @@ import version.mpa.bbs.commands.user.SignupFormCommand;
 
 /**
  * 디스패쳐 서블릿
+ * TODO 리퀘스트 요청 매핑 방법.. controller -> command return ViewRenderer -> render() in controller?
  */
 @WebServlet(urlPatterns = {"/home", "/login", "/logout", "/signup", "/edit-profile", "/notice", "*.new"})
 @AllArgsConstructor

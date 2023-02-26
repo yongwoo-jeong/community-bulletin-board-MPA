@@ -1,4 +1,4 @@
-<%@ page import="version.mpa.bbs.util.ViewUtil" %>
+<%@ page import="version.mpa.bbs.util.ClientUtil" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
          pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -16,7 +16,7 @@
 <%--    <% String headerTitle = "홈페이지";%>--%>
    <div class="row">
        <section class="board__notice col col-lg">
-           <div onclick="location.href='<%=ViewUtil.getUrls().get("NOTICE")%>'" class="section__header bg-secondary text-white h3 ps-2">공지사항</div>
+           <div onclick="location.href='<%=ClientUtil.getUrls().get("NOTICE")%>'" class="section__header bg-secondary text-white h3 ps-2">공지사항</div>
            <div class="article-list__container">
                <table>
                    <tr>

@@ -7,8 +7,9 @@ import version.mpa.bbs.controller.URL;
 
 /**
  * JSP 에 쓰일 유틸
+ * 값 읽는것만 허용
  */
-public class ViewUtil {
+public class ClientUtil {
 	private static final URL[] urlList = URL.values();
 	private static final URLAction[] urlAction = URLAction.values();
 
