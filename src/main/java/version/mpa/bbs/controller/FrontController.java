@@ -25,9 +25,6 @@ import version.mpa.bbs.commands.user.SignupFormCommand;
 @WebServlet(urlPatterns = {"/home", "/login", "/logout", "/signup", "/edit-profile", "/notice", "*.new"})
 @AllArgsConstructor
 public class FrontController extends HttpServlet {
-
-
-
 	/**
 	 * GET request uri 매핑
 	 * @param request
