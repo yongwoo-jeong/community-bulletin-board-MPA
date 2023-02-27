@@ -18,7 +18,7 @@ public class UserRepository {
 	 * @return
 	 */
 	public UserVO selectUser(String userInputAccount) throws IOException {
-		try (SqlSession sqlSession = BatisUtil.getSqlSession()) {
+		try (SqlSession sqlSession = BatisUtil.makeSession()) {
 			UserMapper userMapper = sqlSession.getMapper(UserMapper.class);
 			return userMapper.selectUser(userInputAccount);
 		}
@@ -30,7 +30,7 @@ public class UserRepository {
 	 * @throws IOException
 	 */
 	public void insertUser(UserVO newUser) throws IOException {
-		try (SqlSession sqlSession = BatisUtil.getSqlSession()) {
+		try (SqlSession sqlSession = BatisUtil.makeSession()) {
 			UserMapper userMapper = sqlSession.getMapper(UserMapper.class);
 			userMapper.insertUser(newUser);
 		}

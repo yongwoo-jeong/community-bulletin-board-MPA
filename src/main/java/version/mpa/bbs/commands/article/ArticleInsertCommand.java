@@ -5,11 +5,14 @@ import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
 import com.oreilly.servlet.multipart.FileRenamePolicy;
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Enumeration;
+import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import version.mpa.bbs.commands.Command;
+import version.mpa.bbs.repository.ArticleRepository;
 import version.mpa.bbs.service.ArticleService;
 import version.mpa.bbs.service.FileService;
 import version.mpa.bbs.util.StringUtil;
@@ -41,23 +44,29 @@ public class ArticleInsertCommand implements Command {
 
 		ArticleService articleService = new ArticleService();
 		FileService fileService = new FileService();
-		articleService.insert(newArticle);
 
 		// 전체 파일
 		Enumeration files = multipartRequest.getFileNames();
+		List<FileVO> validFiles = new ArrayList<>();
 		while (files.hasMoreElements()) {
+			// TODO 왜 Enumeration<String> 으로 사용하지 않고 굳이 여기서 캐스팅?
 			String file = (String) files.nextElement();
 			String fileNameOnServer = multipartRequest.getFilesystemName(file);
 			String fileNameOriginal = multipartRequest.getOriginalFileName(file);
-			int fileSize = (int) multipartRequest.getFile(file).length();
 			// 파일 이름, 사이즈 없을 경우 제외
-			if (fileNameOriginal == null || fileSize == 0)
+			if (fileNameOriginal == null)
 				continue;
+			int fileSize = (int) multipartRequest.getFile(file).length();
 			String fileExtension = fileNameOriginal.substring(fileNameOriginal.lastIndexOf(".") + 1);
 			FileVO newFile = FileVO.builder().nameOnServer(fileNameOnServer).nameOriginal(fileNameOriginal).size(fileSize).path(fileDirectory)
 					.extension(fileExtension).build();
-		fileService.insert(newFile);
+			validFiles.add(newFile);
 		}
+
+		fileService.insert(validFiles);
+		articleService.insert(newArticle);
+		new ArticleRepository().insertArticle(newArticle);
+
 	}
 
 }

@@ -19,15 +19,21 @@ public class BatisUtil {
 	 * @return
 	 * @throws IOException
 	 */
-	private static SqlSessionFactory getSqlSessionFactory() throws IOException {
+	private static SqlSessionFactory loadSqlSessionFactory() throws IOException {
 		String resource = "mybatis-config.xml";
 		InputStream inputStream = Resources.getResourceAsStream(resource);
 		return new SqlSessionFactoryBuilder().build(inputStream);
 	}
 
-	public static SqlSession getSqlSession() throws IOException {
+	/**
+	 * 세션 팩토리 이용해서 세션 생성 메서드
+	 * try with resource 로 사용
+	 * @return
+	 * @throws IOException
+	 */
+	public static SqlSession makeSession() throws IOException {
 		if (sqlSessionFactory==null){
-			sqlSessionFactory = getSqlSessionFactory();
+			sqlSessionFactory = loadSqlSessionFactory();
 		}
 		return sqlSessionFactory.openSession(true);
 	}

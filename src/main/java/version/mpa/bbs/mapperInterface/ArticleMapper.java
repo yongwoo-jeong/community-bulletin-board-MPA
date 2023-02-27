@@ -20,7 +20,5 @@ public interface ArticleMapper {
 //	, @Param("searchCriteria")
 //			SearchCriteriaVO searchCriteria
 
-	void insertArticle(@Param("board") String board, @Param("article") ArticleVO articleVO);
-
-
+	void insertArticle(@Param("board") String board, @Param("article") ArticleVO article);
 }
