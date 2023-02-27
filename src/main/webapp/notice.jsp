@@ -1,5 +1,5 @@
 <%@ page import="java.net.URLEncoder" %>
-<%@ page import="version.mpa.bbs.util.ClientUtil" %>
+<%@ page import="com.mpa.bbs.util.ClientUtil" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>

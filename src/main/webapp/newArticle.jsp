@@ -1,4 +1,4 @@
-<%@ page import="version.mpa.bbs.util.ClientUtil" %><%--
+<%@ page import="com.mpa.bbs.util.ClientUtil" %><%--
   Created by IntelliJ IDEA.
   User: jyw
   Date: 2023/02/21

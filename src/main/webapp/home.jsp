@@ -1,4 +1,4 @@
-<%@ page import="version.mpa.bbs.util.ClientUtil" %>
+<%@ page import="com.mpa.bbs.util.ClientUtil" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
          pageEncoding="UTF-8"%>
 <!DOCTYPE html>

@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.mpa.bbs.repository.mapperInterface.UserMapper">
+  <select id="selectUser" resultType="com.mpa.bbs.vo.UserVO">
+    SELECT *
+    FROM user_account
+    WHERE account = #{account}
+  </select>
+  <!-- 회원 등록을 위한 INSERT 쿼리 // 일반회원으로 가입  -->
+  <insert id="insertUser">
+    INSERT INTO user_account
+                            (
+                            account,
+                            password,
+                            username,
+                            email,
+                            created,
+                            role_code
+                            )
+                            VALUES
+                            (
+                            #{newUser.account},
+                            #{newUser.password},
+                            #{newUser.userName},
+                            #{newUser.email},
+                            NOW(),
+                            1
+                            )
+  </insert>
+</mapper>
