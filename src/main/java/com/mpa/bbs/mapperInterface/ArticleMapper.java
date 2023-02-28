@@ -1,4 +1,4 @@
-package com.mpa.bbs.repository.mapperInterface;
+package com.mpa.bbs.mapperInterface;
 
 import com.mpa.bbs.vo.ArticleVO;
 import java.util.List;
@@ -16,7 +16,7 @@ public interface ArticleMapper {
 	 * @param board 게시판 종류. String substitute(${}) 를 사용하기 때문에 서비스 내에서 정해진 값만 전달
 	 * @return 게시글 리스트
 	 */
-	List<ArticleVO> selectSearchArticles(@Param("board") String board, @Param("dbLimitOffset") Integer dbLimitOffset);
+	List<ArticleVO> selectSearchedArticles( @Param("dbLimitOffset") int dbLimitOffset);
 //	, @Param("searchCriteria")
 //			SearchCriteriaVO searchCriteria
 

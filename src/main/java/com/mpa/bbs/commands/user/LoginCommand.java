@@ -1,16 +1,16 @@
 package com.mpa.bbs.commands.user;
 
-import com.mpa.bbs.repository.UserRepository;
+import com.mpa.bbs.commands.Command;
+import com.mpa.bbs.controller.URL;
+import com.mpa.bbs.error.LoginError;
+import com.mpa.bbs.service.UserService;
+import com.mpa.bbs.vo.UserVO;
 import java.io.IOException;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import org.mindrot.jbcrypt.BCrypt;
-import com.mpa.bbs.commands.Command;
-import com.mpa.bbs.controller.URL;
-import com.mpa.bbs.error.LoginError;
-import com.mpa.bbs.vo.UserVO;
 
 /**
  * 로그인 처리 커맨드
@@ -33,7 +33,7 @@ public class LoginCommand implements Command {
 		request.getRequestDispatcher(URL.LOG_IN.getViewPath()).forward(request, response);
 		String userInputAccount = request.getParameter("account");
 		String userInputPassword = request.getParameter("password");
-		UserVO targetUser = new UserRepository().selectUser(userInputAccount);
+		UserVO targetUser = new UserService().selectUser(userInputAccount);
 		if (!BCrypt.checkpw(userInputPassword, targetUser.getPassword())) {
 			request.setAttribute(errorMessage, LoginError.INCORRECT_PASSWORD.getErrorMessage());
 			response.sendError(400);

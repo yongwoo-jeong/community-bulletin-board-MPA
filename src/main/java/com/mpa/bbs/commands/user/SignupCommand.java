@@ -3,7 +3,7 @@ package com.mpa.bbs.commands.user;
 import com.mpa.bbs.commands.Command;
 import com.mpa.bbs.controller.URL;
 import com.mpa.bbs.error.SignUpError;
-import com.mpa.bbs.repository.UserRepository;
+import com.mpa.bbs.service.UserService;
 import com.mpa.bbs.util.StringUtil;
 import com.mpa.bbs.vo.UserVO;
 import java.io.IOException;
@@ -40,7 +40,7 @@ public class SignupCommand implements Command {
 			response.sendError(422);
 		}
 		// 아이디 중복 체크
-		if (new UserRepository().selectUser(account)!=null){
+		if (new UserService().selectUser(account)!=null){
 			request.setAttribute(errorMessage, SignUpError.ACCOUNT_EXISTS.getErrorMessage());
 			response.sendError(422);
 		}
@@ -74,7 +74,7 @@ public class SignupCommand implements Command {
 		}
 
 		UserVO newUser = UserVO.builder().account(account).password(BCrypt.hashpw(password, BCrypt.gensalt())).userName(name).email(email).build();
-		new UserRepository().insertUser(newUser);
+		new UserService().insertUser(newUser);
 		request.getRequestDispatcher(URL.HOME.getViewPath()).forward(request, response);
 
 	}

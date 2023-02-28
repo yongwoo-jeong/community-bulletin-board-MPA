@@ -1,5 +1,10 @@
 package com.mpa.bbs.commands.article;
 
+import com.mpa.bbs.commands.Command;
+import com.mpa.bbs.service.ArticleService;
+import com.mpa.bbs.service.FileService;
+import com.mpa.bbs.util.StringUtil;
+import com.mpa.bbs.vo.FileVO;
 import com.oreilly.servlet.MultipartRequest;
 import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
 import com.oreilly.servlet.multipart.FileRenamePolicy;
@@ -11,13 +16,6 @@ import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import com.mpa.bbs.commands.Command;
-import com.mpa.bbs.repository.ArticleRepository;
-import com.mpa.bbs.service.ArticleService;
-import com.mpa.bbs.service.FileService;
-import com.mpa.bbs.util.StringUtil;
-import com.mpa.bbs.vo.ArticleVO;
-import com.mpa.bbs.vo.FileVO;
 
 /**
  * POST 새 게시글 INSERT
@@ -40,7 +38,7 @@ public class ArticleInsertCommand implements Command {
 		String writer = multipartRequest.getParameter("writer");
 		String title = multipartRequest.getParameter("title");
 		String content = multipartRequest.getParameter("content");
-		ArticleVO newArticle = ArticleVO.builder().title(title).writer(writer).content(content).build();
+//		ArticleVO newArticle = ArticleVO.builder().title(title).writer(writer).content(content).build();
 
 		ArticleService articleService = new ArticleService();
 		FileService fileService = new FileService();
@@ -64,9 +62,10 @@ public class ArticleInsertCommand implements Command {
 		}
 
 		fileService.insert(validFiles);
-		articleService.insert(newArticle);
-		new ArticleRepository().insertArticle(newArticle);
+//		articleService.insert(newArticle);
+//		new ArticleRepository().insertArticle(newArticle);
 
+		response.sendRedirect("/notice");
 	}
 
 }

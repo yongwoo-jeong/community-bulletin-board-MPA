@@ -2,7 +2,7 @@
 <!DOCTYPE mapper
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.mpa.bbs.repository.mapperInterface.ArticleMapper">
+<mapper namespace="com.mpa.bbs.mapperInterface.ArticleMapper">
   <!-- 검색조건 재활용을 위한 sql 프라그먼트 -->
   <sql id="searchCondition">
     <trim prefix="where (" suffix=")" prefixOverrides="AND">
@@ -22,14 +22,15 @@
   </sql>
 
   <!-- 검색조건, 현재 페이지에 해당하는 Limit Offset 받아 해당하는 게시글 List 반환  -->
-  <select id="selectSearchArticles" resultType="com.mpa.bbs.vo.ArticleVO">
+  <select id="selectSearchedArticles" resultType="com.mpa.bbs.vo.ArticleVO" statementType="PREPARED">
     SELECT *
-    FROM ${board}
+    FROM notice_article
+    ORDER BY id DESC
+    LIMIT #{dbLimitOffset}, 10
 <!--        <include refid="searchCondition">-->
 <!--          <property name="searchCriteria" value="searchCriteria"/>-->
 <!--        </include>-->
-    ORDER BY id DESC
-    LIMIT #{dbLimitOffset}, 10
+
   </select>
 
   <!-- 검색조건, 현재 페이지에 해당하는 Limit Offset 받아 해당하는 게시글 수 반환 -->

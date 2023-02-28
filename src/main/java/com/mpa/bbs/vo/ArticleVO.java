@@ -17,7 +17,7 @@ public class ArticleVO {
 	 * 게시글 ID (PK)
 	 * auto increment
 	 */
-	private int id;
+	private Integer id;
 
 	/**
 	 * 게시글 제목
@@ -34,7 +34,7 @@ public class ArticleVO {
 	/**
 	 * 게시글 조회수
 	 */
-	private int view;
+	private Integer view;
 
 	/**
 	 * 게시글 내용
@@ -57,5 +57,5 @@ public class ArticleVO {
 	/**
 	 * 게시판 ID
 	 */
-	private int boardId;
+	private Integer boardId;
 }
