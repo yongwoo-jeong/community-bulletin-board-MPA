@@ -15,7 +15,7 @@
     <a>에러가 발생했습니다</a>
     <% String error = (String) request.getAttribute("errorMessage");
         if (error!= null) {%>
-    <a><%=request.getAttribute("errorMessage")%></a>
+    <a><%=request.getAttribute("javax.servlet.error.message")%></a>
     <% } else {  %>
     <a>알 수 없는 에러가 발생하였습니다.</a>
     <% } %>

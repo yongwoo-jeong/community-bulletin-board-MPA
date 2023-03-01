@@ -7,8 +7,6 @@ f
 6src/main/java/version/mpa/bbs/vo/SearchCriteriaVO.java,4/a/4a591f8b15ea1a94d597b2af9c81b65d61484f9e
 \
 ,src/main/java/version/mpa/bbs/vo/RoleVO.java,3/3/33f7a0957d5a7b9ce35fe99c252b72d75580d2e6
-P
- src/main/webapp/js/navigation.js,b/e/be3dde0a3efd09a62c4afbfc0c69f81c6f3dd95e
 L
 src/main/webapp/js/signUp.js,d/0/d066657de05376e4ec532fa3fb72150bd87c70ef
 c
@@ -29,18 +27,12 @@ m
 =src/main/java/version/mpa/bbs/commands/user/LoginCommand.java,7/9/79fffb56904723c102d64caf753f4b1a5ce6be6e
 g
 7src/main/java/version/mpa/bbs/commands/HomeCommand.java,f/9/f952aa1cdb5d2799adc3c7edee79f3369dac3d69
-T
-$src/main/webapp/component/header.jsp,7/5/75b463b481d97a9508dbef7b1438d83ff9e90308
 7
 gradlew,5/b/5bbfa66edb4db3c7c33c5181f43510990d3307f9
 Z
 *src/main/webapp/component/userInfoForm.jsp,1/7/1721065ba23d63aeb7c2ec1a9a3b67d7747db70d
 n
 >src/main/java/version/mpa/bbs/commands/user/LogoutCommand.java,a/8/a85d3b3e981f1a87a703120ba50bd0acaef0f292
-X
-(src/main/webapp/component/navigation.jsp,3/f/3f09333cead792786f7941cbe777b144fe5c7e13
-S
-#src/main/webapp/component/title.jsp,6/8/687e7f6403cd87b0578b6de2e463769ac0432cdd
 H
 src/main/webapp/home.jsp,6/8/6853166b9553bb500860233db274f93560c021c5
 J
@@ -53,8 +45,6 @@ M
 src/main/webapp/css/index.css,7/8/7839e85e628b9e7f25e4d84a018e9af3b9754b15
 ?
 settings.gradle,0/5/05efc8b1657769a27696d478ded1e95f38737233
-J
-src/main/webapp/notice.jsp,4/2/4273c34eab905663ae813e2485031e0ac13a1a7a
 g
 7src/main/java/version/mpa/bbs/controller/URLAction.java,7/7/77fa10d09e51781e24c061ded31562052ba74e29
 <
@@ -81,8 +71,6 @@ v
 Fsrc/main/java/version/mpa/bbs/commands/article/ArticleFormCommand.java,9/9/99f3941def8b403aa45b688158c1ebfd8ae8c27c
 O
 src/main/webapp/WEB-INF/web.xml,2/e/2e22b6edd746fa3dc40ad7276c87c8d87d72a392
-I
-src/main/webapp/error.jsp,c/b/cba3df22242d379bdb72d00919d2e8d49101d1bf
 b
 2src/main/java/version/mpa/bbs/util/StringUtil.java,b/a/bac7aafcc7c70d2c30e52936b0133bf9d73e6714
 l

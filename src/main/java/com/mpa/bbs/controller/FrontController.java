@@ -2,7 +2,7 @@ package com.mpa.bbs.controller;
 
 import com.mpa.bbs.commands.Command;
 import com.mpa.bbs.commands.article.ArticleInsertCommand;
-import com.mpa.bbs.commands.article.NoticeCommand;
+import com.mpa.bbs.commands.article.ArticleListCommand;
 import com.mpa.bbs.commands.user.LoginCommand;
 import com.mpa.bbs.commands.user.LoginFormCommand;
 import com.mpa.bbs.commands.user.SignupFormCommand;
@@ -40,7 +40,7 @@ public class FrontController extends HttpServlet {
 		} else if (Objects.equals(uri, URL.LOG_IN.getUrlPath())) {
 			return new LoginFormCommand();
 		} else if (Objects.equals(uri, URL.NOTICE.getUrlPath())) {
-			return new NoticeCommand();
+			return new ArticleListCommand();
 		} else if (Objects.equals(uri, URL.NOTICE.getUrlPath()+ URLAction.NEW.getActionUri())) {
 			return new ArticleFormCommand();
 		}
