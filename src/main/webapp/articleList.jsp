@@ -13,6 +13,7 @@
 <body>
 <jsp:include page="component/navigation.jsp"></jsp:include>
 <main>
+  <span>총 <%=request.getAttribute("articleCount")%>건</span>
 <%--TODO 리스트 / 갤러리형 컴포넌트로 불러와서 파라미터 값에 따라 보여주기/숨기기  --%>
   <table style="border-collapse: collapse">
     <tr>

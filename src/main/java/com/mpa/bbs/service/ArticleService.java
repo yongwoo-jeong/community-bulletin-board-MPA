@@ -42,7 +42,6 @@ public class ArticleService {
 	 * TODO Set SearchCondition
 	 *
 	 * @param boardType
-	 * @param dbLimitOffset
 	 * @return
 	 * @throws IOException
 	 */

@@ -6,7 +6,7 @@
        Integer pageCount = articleCount /10 +1 ; %>
 
     <% for (int i = 1; i <= pageCount; i++) { %>
-        <a class="page-item" href=javascript:paging(<%=i%>) <%=(i == currentPage) ? "style='color:red'" : "" %> ><%=i%></a>
+        <a class="page-item" href=javascript:paging(<%=i%>) <%=(i == currentPage) ? "style='color:red'" : "" %> >&nbsp;<%=i%>&nbsp;</a>
     <% } %>
 </div>
 

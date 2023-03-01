@@ -33,7 +33,7 @@ public class ArticleListCommand implements Command {
 		if (!StringUtil.isEmpty(currentPage)) {
 			parsedCurrentPage = Integer.parseInt(currentPage);
 			searchCriteria.setCurrentPage(parsedCurrentPage);
-			searchCriteria.setDbLimitOffset((parsedCurrentPage*10)+1);
+			searchCriteria.setDbLimitOffset((parsedCurrentPage-1)*10);
 		}
 
 

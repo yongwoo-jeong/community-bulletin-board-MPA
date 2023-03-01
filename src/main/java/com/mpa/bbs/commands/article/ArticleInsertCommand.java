@@ -4,6 +4,7 @@ import com.mpa.bbs.commands.Command;
 import com.mpa.bbs.service.ArticleService;
 import com.mpa.bbs.service.FileService;
 import com.mpa.bbs.util.StringUtil;
+import com.mpa.bbs.vo.ArticleVO;
 import com.mpa.bbs.vo.FileVO;
 import com.oreilly.servlet.MultipartRequest;
 import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
@@ -38,7 +39,7 @@ public class ArticleInsertCommand implements Command {
 		String writer = multipartRequest.getParameter("writer");
 		String title = multipartRequest.getParameter("title");
 		String content = multipartRequest.getParameter("content");
-//		ArticleVO newArticle = ArticleVO.builder().title(title).writer(writer).content(content).build();
+		ArticleVO newArticle = ArticleVO.builder().title(title).writer(writer).content(content).build();
 
 		ArticleService articleService = new ArticleService();
 		FileService fileService = new FileService();
@@ -62,8 +63,7 @@ public class ArticleInsertCommand implements Command {
 		}
 
 		fileService.insert(validFiles);
-//		articleService.insert(newArticle);
-//		new ArticleRepository().insertArticle(newArticle);
+		articleService.insert(newArticle);
 
 		response.sendRedirect("/notice");
 	}

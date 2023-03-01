@@ -42,7 +42,7 @@ public enum URL {
 	/**
 	 * ONLY GET
 	 */
-	NOTICE("/notice", "/notice.jsp");
+	NOTICE("/notice", "/articleList.jsp");
 
 	/**
 	 * URL 주소
