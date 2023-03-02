@@ -11,5 +11,5 @@ public interface FileMapper {
 	/**
 	 * 새 파일 삽입
 	 */
-	void insertFile(@Param("newFile") FileVO newFile);
+	void insertFile(@Param("tableName") String tableName ,@Param("newFile") FileVO newFile, @Param("articleId") Integer articleId);
 }

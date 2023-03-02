@@ -1,10 +1,4 @@
-<%@ page import="com.mpa.bbs.util.ClientUtil" %><%--
-  Created by IntelliJ IDEA.
-  User: jyw
-  Date: 2023/02/21
-  Time: 9:37 PM
-  To change this template use File | Settings | File Templates.
---%>
+<%@ page import="com.mpa.bbs.util.ClientUtil" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
@@ -12,8 +6,7 @@
 </head>
 <body>
 <main>
-    <form method="post" enctype="multipart/form-data" action=<%=
-    ClientUtil.getUrls().get("NOTICE")+ ClientUtil.getActionUri().get("NEW")%>>
+    <form method="post" enctype="multipart/form-data" action=<%=ClientUtil.getUrls().get("NEW_NOTICE")%>>
         <table style="border-collapse: collapse">
             <tr>
                 <th>카테고리*</th>

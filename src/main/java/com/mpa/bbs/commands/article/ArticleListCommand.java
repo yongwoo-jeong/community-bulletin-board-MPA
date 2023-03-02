@@ -5,7 +5,7 @@ import com.mpa.bbs.controller.URL;
 import com.mpa.bbs.service.ArticleService;
 import com.mpa.bbs.util.StringUtil;
 import com.mpa.bbs.vo.ArticleVO;
-import com.mpa.bbs.vo.BoardType;
+import com.mpa.bbs.service.TableName;
 import com.mpa.bbs.vo.SearchVO;
 import java.io.IOException;
 import java.util.List;
@@ -22,7 +22,7 @@ public class ArticleListCommand implements Command {
 	public void execute(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		String boardId = request.getParameter("boardId");
-		String boardType = BoardType.NOTICE.getTableName();
+		String tableName = TableName.NOTICE.getArticleTable();
 
 		SearchVO searchCriteria = SearchVO.builder().build();
 		String keyword = request.getParameter("keyword");
@@ -38,8 +38,8 @@ public class ArticleListCommand implements Command {
 
 
 		ArticleService articleService = new ArticleService();
-		Integer articleCount = articleService.selectArticleCount(boardType, searchCriteria);
-		List<ArticleVO> articleList = articleService.selectArticleList(boardType, searchCriteria);
+		Integer articleCount = articleService.selectCount(tableName, searchCriteria);
+		List<ArticleVO> articleList = articleService.selectList(tableName, searchCriteria);
 		request.setAttribute("articleCount", articleCount);
 		request.setAttribute("articleList", articleList);
 		request.setAttribute("currentPage", searchCriteria.getCurrentPage());

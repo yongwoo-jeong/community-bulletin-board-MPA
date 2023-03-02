@@ -19,25 +19,25 @@
 
   <!-- 새 파일 삽입  -->
   <insert id="insertFile">
-    INSERT INTO file
+    INSERT INTO ${tableName}
     (
     uuid,
     name_on_server,
     name_original,
     size,
     path,
-    file_extension
+    extension,
     article_id
     )
     VALUES
     (
     UNHEX(REPLACE(UUID(),'-','')),
-    #{nameOnServer},
-    #{nameOriginal},
-    #{filePath},
-    #{fileSize},
-    #{fileExtension}
-    #{articleId},
+    #{newFile.nameOnServer},
+    #{newFile.nameOriginal},
+    #{newFile.size},
+    #{newFile.path},
+    #{newFile.extension},
+    #{articleId}
     )
   </insert>
   <!-- 게시글 수정 시 업로드된 개별 파일 삭제  -->

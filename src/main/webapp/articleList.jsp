@@ -28,7 +28,7 @@
       for (ArticleVO article : articleList) { %>
     <tr>
       <td>✉︎</td>
-      <td><%=article.getTitle()%></td>
+      <td><a href="/noticeDetail?id=<%=article.getId()%>"><%=article.getTitle()%></a></td>
       <td><%=article.getWriter()%></td>
       <td><%=article.getView()%></td>
       <td><%=article.getCreated()%></td>
@@ -38,7 +38,7 @@
   </table>
 </main>
 <jsp:include page="component/pagination.jsp"></jsp:include>
-<div class="border-1" role="button" onclick="location.href='<%=ClientUtil.getUrls().get("NOTICE")%><%=ClientUtil.getActionUri().get("NEW")%>'" >글쓰기</div>
+<div class="border-1" role="button" onclick="location.href='<%=ClientUtil.getUrls().get("NEW_NOTICE")%>'" >글쓰기</div>
 <script src="js/navigation.js"></script>
 </body>
 </html>

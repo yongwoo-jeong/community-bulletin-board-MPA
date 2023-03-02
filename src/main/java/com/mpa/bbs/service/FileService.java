@@ -14,14 +14,17 @@ public class FileService {
 
 	/**
 	 * 파일 검증 이후 insert
-	 * @param newFiles
+	 * @param tableName 4 개 파일 테이블 중 삽입
+	 * @param newFiles List of file vo
 	 * @throws IOException
 	 */
-	public void insert(List<FileVO> newFiles) throws IOException {
+	public void insert(String tableName, List<FileVO> newFiles, Integer articleId) throws IOException {
 		// 검증 로직
 		for (FileVO file:newFiles){
 			try (SqlSession sqlSession = BatisUtil.makeSession()) {
 				FileMapper fileMapper = sqlSession.getMapper(FileMapper.class);
+				System.out.println(file.getNameOriginal());
+				fileMapper.insertFile(tableName, file, articleId);
 			}
 		}
 	}

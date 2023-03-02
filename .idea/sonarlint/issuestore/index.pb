@@ -13,8 +13,6 @@ c
 3src/main/java/version/mpa/bbs/error/LoginError.java,5/3/53b8778ac14e4d0ec7bc3ba8abfcba6b8551b009
 d
 4src/main/java/version/mpa/bbs/error/SignUpError.java,7/6/76b5f72f72fa64526031f2c014df0c96b901dfa0
-T
-$src/main/webapp/js/formValidation.js,f/8/f85279b01d2f648c7cfee8528da01ff773b7171a
 h
 8src/main/java/version/mpa/bbs/commands/ErrorCommand.java,9/f/9fee509fecd107ada2baebc3efe10598b304c2de
 c
@@ -57,8 +55,6 @@ a
 -src/main/java/version/mpa/bbs/vo/BoardVO.java,9/f/9fdff1c3f22c92c50759975e47c0bc75aed1b716
 M
 src/main/webapp/loginForm.jsp,8/9/89cca756b7c3aab825ff537bdf3512149a0753a1
-N
-src/main/webapp/newArticle.jsp,e/2/e29cef3d99da714041386546061a775e86e11bca
 j
 :src/main/java/version/mpa/bbs/controller/ViewRenderer.java,e/8/e88d1f9bdfcb4b96b710d55d4cf9b0a4cd6dc2a4
 _

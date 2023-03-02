@@ -3,6 +3,7 @@ package com.mpa.bbs.commands.article;
 import com.mpa.bbs.commands.Command;
 import com.mpa.bbs.service.ArticleService;
 import com.mpa.bbs.service.FileService;
+import com.mpa.bbs.service.TableName;
 import com.mpa.bbs.util.StringUtil;
 import com.mpa.bbs.vo.ArticleVO;
 import com.mpa.bbs.vo.FileVO;
@@ -25,6 +26,7 @@ public class ArticleInsertCommand implements Command {
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+		System.out.println("this is getting hitted");
 		// 멀티파트 파라미터
 		String fileDirectory = new StringUtil().getProperties("multipart.saveDirectory");
 		File directoryExists = new File(fileDirectory);
@@ -55,15 +57,17 @@ public class ArticleInsertCommand implements Command {
 			// 파일 이름, 사이즈 없을 경우 제외
 			if (fileNameOriginal == null)
 				continue;
-			int fileSize = (int) multipartRequest.getFile(file).length();
+			Integer fileSize = (int) multipartRequest.getFile(file).length();
 			String fileExtension = fileNameOriginal.substring(fileNameOriginal.lastIndexOf(".") + 1);
 			FileVO newFile = FileVO.builder().nameOnServer(fileNameOnServer).nameOriginal(fileNameOriginal).size(fileSize).path(fileDirectory)
 					.extension(fileExtension).build();
 			validFiles.add(newFile);
 		}
 
-		fileService.insert(validFiles);
-		articleService.insert(newArticle);
+		String articleTable = TableName.NOTICE.getArticleTable();
+		String fileTable = TableName.NOTICE.getFileTable();
+		articleService.insert(articleTable, newArticle);
+		fileService.insert(fileTable, validFiles, newArticle.getId());
 
 		response.sendRedirect("/notice");
 	}
