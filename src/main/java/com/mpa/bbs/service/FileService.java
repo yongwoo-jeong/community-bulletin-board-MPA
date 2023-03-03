@@ -19,13 +19,26 @@ public class FileService {
 	 * @throws IOException
 	 */
 	public void insert(String tableName, List<FileVO> newFiles, Integer articleId) throws IOException {
-		// 검증 로직
+		// TODO 검증 로직
 		for (FileVO file:newFiles){
 			try (SqlSession sqlSession = BatisUtil.makeSession()) {
 				FileMapper fileMapper = sqlSession.getMapper(FileMapper.class);
-				System.out.println(file.getNameOriginal());
 				fileMapper.insertFile(tableName, file, articleId);
 			}
+		}
+	}
+
+	public List<FileVO> selectFileList(String tableName, Integer articleId) throws IOException {
+		try (SqlSession sqlSession = BatisUtil.makeSession()) {
+			FileMapper fileMapper = sqlSession.getMapper(FileMapper.class);
+			return fileMapper.selectFileList(tableName, articleId);
+		}
+	}
+
+	public List<Integer> selectIsFileAttached(Integer dbOffsetStart, Integer dbOffsetEnd) throws IOException {
+		try (SqlSession sqlSession = BatisUtil.makeSession()) {
+			FileMapper fileMapper = sqlSession.getMapper(FileMapper.class);
+			return fileMapper.selectIsFileAttached(dbOffsetStart, dbOffsetEnd);
 		}
 	}
 }

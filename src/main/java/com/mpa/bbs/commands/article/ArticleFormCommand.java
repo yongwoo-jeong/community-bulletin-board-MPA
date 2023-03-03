@@ -6,6 +6,9 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+/**
+ * 새 게시글 FORM
+ */
 public class ArticleFormCommand implements Command {
 
 	@Override

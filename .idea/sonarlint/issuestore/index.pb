@@ -31,8 +31,6 @@ Z
 *src/main/webapp/component/userInfoForm.jsp,1/7/1721065ba23d63aeb7c2ec1a9a3b67d7747db70d
 n
 >src/main/java/version/mpa/bbs/commands/user/LogoutCommand.java,a/8/a85d3b3e981f1a87a703120ba50bd0acaef0f292
-H
-src/main/webapp/home.jsp,6/8/6853166b9553bb500860233db274f93560c021c5
 J
 src/main/webapp/signUp.jsp,7/b/7b0c32abc225a368002b6348bd3471d95d4d582a
 i

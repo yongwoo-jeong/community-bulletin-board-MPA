@@ -25,9 +25,14 @@
       <th>수정일</th>
     </tr>
     <% List<ArticleVO> articleList = (List<ArticleVO>) request.getAttribute("articleList");
+       List<Integer> articleListFileAttached = (List<Integer>) request.getAttribute("articleListFileAttached");
       for (ArticleVO article : articleList) { %>
     <tr>
-      <td>✉︎</td>
+      <% if (articleListFileAttached.contains(article.getId())){ %>
+      <td>💾</td>
+      <% } else  { %>
+      <td></td>
+      <% } %>
       <td><a href="/noticeDetail?id=<%=article.getId()%>"><%=article.getTitle()%></a></td>
       <td><%=article.getWriter()%></td>
       <td><%=article.getView()%></td>
