@@ -24,10 +24,12 @@
       <th>등록일</th>
       <th>수정일</th>
     </tr>
+    <%-- 게시글 리스트, 파일첨부된 게시글 ID 리스트    --%>
     <% List<ArticleVO> articleList = (List<ArticleVO>) request.getAttribute("articleList");
        List<Integer> articleListFileAttached = (List<Integer>) request.getAttribute("articleListFileAttached");
       for (ArticleVO article : articleList) { %>
     <tr>
+      <%-- 파일 첨부 게시글 ID 리스트에 포함될 경우 아이콘 표시      --%>
       <% if (articleListFileAttached.contains(article.getId())){ %>
       <td>💾</td>
       <% } else  { %>

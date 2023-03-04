@@ -48,7 +48,7 @@
         %>
         <div class="file">
             <a>💾</a>
-            <a href=/download?fileId=<%=file.getUuid()%>>
+            <a href=/download?board=notice&uuid=<%=file.getUuid()%>>
                 <%=file.getNameOriginal()%>
             </a>
         </div>

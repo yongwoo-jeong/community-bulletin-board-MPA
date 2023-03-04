@@ -14,7 +14,9 @@ public interface FileMapper {
 	 */
 	void insertFile(@Param("tableName") String tableName ,@Param("newFile") FileVO newFile, @Param("articleId") Integer articleId);
 
+	FileVO select(@Param("tableName") String tableName, @Param("fileUuid") String fileUuid);
+
 	List<FileVO> selectFileList(@Param("tableName") String tableName, @Param("articleId")Integer articleId);
 
-	List<Integer> selectIsFileAttached(@Param("dbOffsetStart") Integer dbOffsetStart, @Param("dbOffsetEnd") Integer dbOffsetEnd);
+	List<Integer> selectIsFileAttached(@Param("fileTable") String fileTable, @Param("articleTable") String articleTable, @Param("dbOffsetStart") Integer dbOffsetStart, @Param("dbOffsetEnd") Integer dbOffsetEnd);
 }

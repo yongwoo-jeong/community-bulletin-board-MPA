@@ -49,7 +49,7 @@ public class ArticleListCommand implements Command {
 		// 현재 페이지 게시글 ID 최솟값
 		Integer minId = articleList.stream().map(ArticleVO::getId).min(Integer::compareTo).orElse(0);
 		// 파일이 첨부된 게시글 ID 리스트
-		List<Integer> articleListFileAttached = fileService.selectIsFileAttached(minId, maxId);
+		List<Integer> articleListFileAttached = fileService.selectIsFileAttached(TableName.NOTICE.getFileTable(), TableName.NOTICE.getArticleTable(), minId, maxId);
 		request.setAttribute("articleCount", articleCount);
 		request.setAttribute("articleList", articleList);
 		request.setAttribute("articleListFileAttached", articleListFileAttached);

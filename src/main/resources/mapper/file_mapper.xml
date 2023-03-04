@@ -3,26 +3,29 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.mpa.bbs.mapperInterface.FileMapper">
-  <!-- SELECT 파일 리스트 반환  -->
+  <!-- 파일 다운로드 - 파일 튜플 반환  -->
+  <select id="select" resultType="com.mpa.bbs.vo.FileVO">
+    SELECT *
+    FROM   ${tableName}
+    WHERE  uuid = #{fileUuid}
+  </select>
+
+<!-- 게시글 리스트에서 보일 파일 첨부 여부  -->
+  <select id="selectIsFileAttached" resultType="Integer">
+    SELECT article_id
+    FROM ${fileTable} A
+    INNER JOIN ${articleTable} B on A.article_id = B.id
+    WHERE B.id between #{dbOffsetStart} AND #{dbOffsetEnd};
+  </select>
+
+  <!-- 게시글 상세 - 파일 리스트 반환  -->
   <select id="selectFileList" resultType="com.mpa.bbs.vo.FileVO">
     SELECT *
     FROM   ${tableName}
     WHERE  article_id = #{articleId}
   </select>
 
-  <!-- 파일 다운로드를 위해 해당 파일 튜플 반환  -->
-  <select id="selectForDownload" resultType="com.mpa.bbs.vo.FileVO">
-    SELECT *
-    FROM   file
-    WHERE  file_uuid = #{fileUuid}
-  </select>
 
-  <select id="selectIsFileAttached" resultType="Integer">
-    SELECT article_id
-    FROM notice_file A
-    INNER JOIN notice_article B on A.article_id = B.id
-    WHERE B.id between #{dbOffsetStart} AND #{dbOffsetEnd};
-  </select>
 
   <!-- 새 파일 삽입  -->
   <insert id="insertFile">

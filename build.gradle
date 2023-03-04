@@ -27,6 +27,7 @@ dependencies {
     implementation 'org.mariadb.jdbc:mariadb-java-client:3.1.2'
     implementation 'org.mindrot:jbcrypt:0.4'
     implementation 'servlets.com:cos:05Nov2002'
+    implementation 'com.ibm.icu:icu4j:72.1'
 
     compileOnly('javax:javaee-web-api:8.0.1')
     annotationProcessor('org.projectlombok:lombok:1.18.26')

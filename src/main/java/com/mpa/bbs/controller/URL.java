@@ -7,6 +7,7 @@ import com.mpa.bbs.commands.article.ArticleDetailCommand;
 import com.mpa.bbs.commands.article.ArticleFormCommand;
 import com.mpa.bbs.commands.article.ArticleInsertCommand;
 import com.mpa.bbs.commands.article.ArticleListCommand;
+import com.mpa.bbs.commands.file.FileDownloadCommand;
 import com.mpa.bbs.commands.user.LoginCommand;
 import com.mpa.bbs.commands.user.LoginFormCommand;
 import com.mpa.bbs.commands.user.LogoutCommand;
@@ -74,7 +75,12 @@ public enum URL {
 	/**
 	 * 게시글 디테일
 	 */
-	ARTICLE_DETAIL("/noticeDetail" , "/articleDetail.jsp", new ArticleDetailCommand(), new ErrorCommand());
+	NOTICE_DETAIL("/noticeDetail" , "/articleDetail.jsp", new ArticleDetailCommand(), new ErrorCommand()),
+
+	/**
+	 * 파일 다운로드 스트림 처리
+	 */
+	NOTICE_FILE_DOWNLOAD("/download", "", new FileDownloadCommand(), new ErrorCommand());
 
 	/**
 	 * URL 주소

@@ -26,7 +26,6 @@ public class ArticleInsertCommand implements Command {
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		System.out.println("this is getting hitted");
 		// 멀티파트 파라미터
 		String fileDirectory = new StringUtil().getProperties("multipart.saveDirectory");
 		File directoryExists = new File(fileDirectory);
@@ -54,6 +53,7 @@ public class ArticleInsertCommand implements Command {
 			String file = (String) files.nextElement();
 			String fileNameOnServer = multipartRequest.getFilesystemName(file);
 			String fileNameOriginal = multipartRequest.getOriginalFileName(file);
+
 			// 파일 이름, 사이즈 없을 경우 제외
 			if (fileNameOriginal == null)
 				continue;

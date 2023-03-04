@@ -28,6 +28,13 @@ public class FileService {
 		}
 	}
 
+	public FileVO select(String tableName, String fileUuid) throws IOException {
+		try (SqlSession sqlSession = BatisUtil.makeSession()) {
+			FileMapper fileMapper = sqlSession.getMapper(FileMapper.class);
+			return fileMapper.select(tableName, fileUuid);
+		}
+	}
+
 	public List<FileVO> selectFileList(String tableName, Integer articleId) throws IOException {
 		try (SqlSession sqlSession = BatisUtil.makeSession()) {
 			FileMapper fileMapper = sqlSession.getMapper(FileMapper.class);
@@ -35,10 +42,10 @@ public class FileService {
 		}
 	}
 
-	public List<Integer> selectIsFileAttached(Integer dbOffsetStart, Integer dbOffsetEnd) throws IOException {
+	public List<Integer> selectIsFileAttached(String fileTable, String articleTableInteger, Integer dbOffsetStart, Integer dbOffsetEnd) throws IOException {
 		try (SqlSession sqlSession = BatisUtil.makeSession()) {
 			FileMapper fileMapper = sqlSession.getMapper(FileMapper.class);
-			return fileMapper.selectIsFileAttached(dbOffsetStart, dbOffsetEnd);
+			return fileMapper.selectIsFileAttached(fileTable, articleTableInteger, dbOffsetStart, dbOffsetEnd);
 		}
 	}
 }

@@ -26,6 +26,6 @@ public class ArticleDetailCommand implements Command {
 		List<FileVO> fileList = new FileService().selectFileList(TableName.NOTICE.getFileTable(), articleId);
 		request.setAttribute("targetArticle", targetArticle);
 		request.setAttribute("fileList", fileList);
-		request.getRequestDispatcher(URL.ARTICLE_DETAIL.getViewPath()).forward(request, response);
+		request.getRequestDispatcher(URL.NOTICE_DETAIL.getViewPath()).forward(request, response);
 	}
 }

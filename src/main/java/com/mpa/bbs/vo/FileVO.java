@@ -1,6 +1,5 @@
 package com.mpa.bbs.vo;
 
-import java.util.UUID;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
@@ -21,7 +20,7 @@ public class FileVO {
 	/**
 	 * UUID - auto increment
 	 */
-	private UUID uuid;
+	private String uuid;
 
 	/**
 	 * 서버상 파일명
