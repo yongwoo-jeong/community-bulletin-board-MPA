@@ -40,7 +40,8 @@ public class ArticleInsertCommand implements Command {
 		String writer = multipartRequest.getParameter("writer");
 		String title = multipartRequest.getParameter("title");
 		String content = multipartRequest.getParameter("content");
-		ArticleVO newArticle = ArticleVO.builder().title(title).writer(writer).content(content).build();
+		ArticleVO newArticle = ArticleVO.builder().title(title).writer(writer).content(content)
+				.boardId(0).build();
 
 		ArticleService articleService = new ArticleService();
 		FileService fileService = new FileService();
@@ -67,9 +68,10 @@ public class ArticleInsertCommand implements Command {
 		String articleTable = TableName.NOTICE.getArticleTable();
 		String fileTable = TableName.NOTICE.getFileTable();
 		articleService.insert(articleTable, newArticle);
-		fileService.insert(fileTable, validFiles, newArticle.getId());
+		Integer newArticleId = newArticle.getId();
+		fileService.insert(fileTable, validFiles, newArticleId );
 
-		response.sendRedirect("/notice");
+		response.sendRedirect("/noticeDetail?id="+newArticleId);
 	}
 
 }

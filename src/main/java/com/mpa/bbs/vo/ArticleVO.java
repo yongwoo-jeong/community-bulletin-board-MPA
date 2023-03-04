@@ -61,5 +61,6 @@ public class ArticleVO {
 	/**
 	 * 게시판 ID
 	 */
+	@NonNull
 	private Integer boardId;
 }

@@ -7,6 +7,7 @@ import com.mpa.bbs.commands.article.ArticleDetailCommand;
 import com.mpa.bbs.commands.article.ArticleFormCommand;
 import com.mpa.bbs.commands.article.ArticleInsertCommand;
 import com.mpa.bbs.commands.article.ArticleListCommand;
+import com.mpa.bbs.commands.comment.CommentInsertCommand;
 import com.mpa.bbs.commands.file.FileDownloadCommand;
 import com.mpa.bbs.commands.user.LoginCommand;
 import com.mpa.bbs.commands.user.LoginFormCommand;
@@ -80,7 +81,14 @@ public enum URL {
 	/**
 	 * 파일 다운로드 스트림 처리
 	 */
-	NOTICE_FILE_DOWNLOAD("/download", "", new FileDownloadCommand(), new ErrorCommand());
+	NOTICE_FILE_DOWNLOAD("/download", "", new FileDownloadCommand(), new ErrorCommand()),
+
+	/**
+	 * 새 댓글 POST 요청 처리
+	 */
+	NEW_COMMENT("/comment.new", "", new ErrorCommand(), new CommentInsertCommand());
+
+
 
 	/**
 	 * URL 주소

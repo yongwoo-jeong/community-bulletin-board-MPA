@@ -35,7 +35,7 @@ public class FileDownloadCommand implements Command {
 		// TODO 파일이 정상적으로 UTF8 인코딩 되었지만 이 과정을 거치지 않으면 파일명이 정상출력 되지 않음.
 		String encodedFileName = URLEncoder.encode(originalName, "UTF-8").replace("+", "%20");
 		response.setHeader("Cache-Control","no-cache");
-		response.addHeader("Content-disposition", "attachment; filename*=UTF-8''" +  encodedFileName);
+		response.addHeader("Content-disposition", "attachment; filename=" +  encodedFileName);
 
 		try (FileInputStream in = new FileInputStream(file)) {
 			byte[] buffer = new byte[downloadingFile.getSize()];

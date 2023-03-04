@@ -55,7 +55,8 @@
                           writer,
                           content,
                           view,
-                          created
+                          created,
+                          board_id
                         )
                           VALUES
                         (
@@ -63,7 +64,8 @@
                           #{article.writer},
                           #{article.content},
                           0,
-                          NOW()
+                          NOW(),
+                          #{article.boardId}
                         )
     <selectKey keyProperty="article.id" resultType="int" order="AFTER" >
       SELECT LAST_INSERT_ID()
