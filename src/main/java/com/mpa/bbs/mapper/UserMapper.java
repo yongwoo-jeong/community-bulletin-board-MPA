@@ -1,4 +1,4 @@
-package com.mpa.bbs.mapperInterface;
+package com.mpa.bbs.mapper;
 
 import org.apache.ibatis.annotations.Param;
 import com.mpa.bbs.vo.UserVO;

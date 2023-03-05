@@ -8,6 +8,8 @@
     <title>Title</title>
 </head>
 <body>
+<jsp:include page="component/navigation.jsp"></jsp:include>
+<br/>
 <%
     ArticleVO article = (ArticleVO) request.getAttribute("targetArticle");
 	List<FileVO> fileList = (List<FileVO>) request.getAttribute("fileList");
@@ -65,7 +67,11 @@
 <%--        </div>--%>
 <%--        <% } %>--%>
         <div>
-            <form method="post" action=/addComment?<%=request.getQueryString()%> name="uploadComment">
+            <%
+                Integer boardId = article.getBoardId();
+				Integer articleId = article.getId();
+            %>
+            <form method="post" action=/comment.new?board=<%=boardId%>&id=<%=articleId%> name="uploadComment">
                 <input name="content" class="comment_input" type="text" placeholder="댓글을 입력해주세요" />
                 <input type="submit" class="save_button" value="저장" />
             </form>

@@ -1,4 +1,4 @@
-package com.mpa.bbs.mapperInterface;
+package com.mpa.bbs.mapper;
 
 import com.mpa.bbs.vo.FileVO;
 import java.util.List;

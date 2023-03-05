@@ -1,6 +1,6 @@
 package com.mpa.bbs.service;
 
-import com.mpa.bbs.mapperInterface.ArticleMapper;
+import com.mpa.bbs.mapper.ArticleMapper;
 import com.mpa.bbs.util.BatisUtil;
 import com.mpa.bbs.vo.ArticleVO;
 import com.mpa.bbs.vo.SearchVO;

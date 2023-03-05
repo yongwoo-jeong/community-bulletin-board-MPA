@@ -1,7 +1,7 @@
 package com.mpa.bbs.service;
 
 import com.mpa.bbs.error.SignUpError;
-import com.mpa.bbs.mapperInterface.UserMapper;
+import com.mpa.bbs.mapper.UserMapper;
 import com.mpa.bbs.util.BatisUtil;
 import com.mpa.bbs.util.StringUtil;
 import com.mpa.bbs.vo.UserVO;

@@ -13,7 +13,6 @@
 <jsp:include page="component/navigation.jsp"></jsp:include>
 <br/>
 <main class="board mx-lg-2">
-<%--    <% String headerTitle = "홈페이지";%>--%>
    <div class="row">
        <section class="board__notice col col-lg">
            <div onclick="location.href='<%=ClientUtil.getUrls().get("NOTICE")%>'" class="section__header bg-secondary text-white h3 ps-2">공지사항</div>

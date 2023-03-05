@@ -1,6 +1,6 @@
 package com.mpa.bbs.service;
 
-import com.mpa.bbs.mapperInterface.FileMapper;
+import com.mpa.bbs.mapper.FileMapper;
 import com.mpa.bbs.util.BatisUtil;
 import com.mpa.bbs.vo.FileVO;
 import java.io.IOException;

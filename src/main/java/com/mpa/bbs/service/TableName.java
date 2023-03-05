@@ -1,5 +1,8 @@
 package com.mpa.bbs.service;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Objects;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 
@@ -47,7 +50,22 @@ public enum TableName {
 	 */
 	private final Integer boardId;
 
+	public static TableName getConstantById(Integer boardId) {
+		for (TableName tableName : TableName.values()) {
+			if (Objects.equals(tableName.getBoardId(), boardId)) {
+				return tableName;
+			}
+		}
+		return null;
+	}
 
+	public static List<Integer> getBoardIdList(){
+		List<Integer> boardIdList=  new ArrayList<>();
+		for (TableName tableName : TableName.values()) {
+			boardIdList.add(tableName.getBoardId());
+		}
+		return boardIdList;
+	}
 
 
 }
