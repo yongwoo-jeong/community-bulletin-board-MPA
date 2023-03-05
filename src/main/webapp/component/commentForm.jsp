@@ -3,7 +3,7 @@
 <div>
     <%
         ArticleVO article = (ArticleVO) request.getAttribute("targetArticle");
-		String username = (String) request.getAttribute("username");
+		String username = request.getParameter("username");
         Integer boardId = article.getBoardId();
         Integer articleId = article.getId();
     %>

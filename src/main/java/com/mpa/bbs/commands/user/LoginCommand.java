@@ -4,6 +4,7 @@ import com.mpa.bbs.commands.Command;
 import com.mpa.bbs.controller.URL;
 import com.mpa.bbs.error.LoginError;
 import com.mpa.bbs.service.UserService;
+import com.mpa.bbs.util.StringUtil;
 import com.mpa.bbs.vo.UserVO;
 import java.io.IOException;
 import javax.servlet.ServletException;
@@ -29,21 +30,35 @@ public class LoginCommand implements Command {
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		String errorMessage = "errorMessage";
-		request.getRequestDispatcher(URL.LOG_IN.getViewPath()).forward(request, response);
 		String userInputAccount = request.getParameter("account");
 		String userInputPassword = request.getParameter("password");
 		UserVO targetUser = new UserService().selectUser(userInputAccount);
+
+		// 로그인 실패 로직
+		String errorMessage = "errorMessage";
+		if (targetUser == null){
+			request.setAttribute(errorMessage, LoginError.INVALID_ACCOUNT.getErrorMessage());
+			response.sendError(400);
+			return;
+		}
 		if (!BCrypt.checkpw(userInputPassword, targetUser.getPassword())) {
 			request.setAttribute(errorMessage, LoginError.INCORRECT_PASSWORD.getErrorMessage());
 			response.sendError(400);
 			return;
 		}
+
+		// 로그인 성공 시 세션 생성
 		HttpSession loginSession = request.getSession();
 		loginSession.setAttribute("loginAccount", targetUser.getAccount());
 		loginSession.setAttribute("loginUsername", targetUser.getUserName());
-		// 세션 유지 4시간
 		loginSession.setMaxInactiveInterval(60*60*4);
-		request.getRequestDispatcher(URL.HOME.getViewPath()).forward(request,response);
+
+		// 로그인 성공 이후 이전 페이지로 되돌려보내기
+		String prevPage = request.getHeader("referer");
+		if (StringUtil.isEmpty(prevPage)){
+			response.sendRedirect(URL.HOME.getUrlPath());
+			return;
+		}
+		response.sendRedirect(prevPage);
 	}
 }

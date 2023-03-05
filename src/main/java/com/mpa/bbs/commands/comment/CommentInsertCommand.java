@@ -24,8 +24,9 @@ public class CommentInsertCommand implements Command {
 		String boardType = TableName.getConstantById(boardId).getCommentTable();
 		Integer articleId = Integer.valueOf(request.getParameter("id"));
 		String content = request.getParameter("content");
-		String writer = request.getParameter("writer");
+		String writer = request.getParameter("username");
 		CommentVO newComment = CommentVO.builder().writer(writer).content(content).articleId(articleId).build();
 		new CommentService().insert(boardType, newComment);
+
 	}
 }
