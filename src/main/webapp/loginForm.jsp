@@ -13,6 +13,7 @@
         <form method="post" action="/login">
             <input name="account" type="text" placeholder="아이디"/>
             <input name="password" type="password" placeholder="비밀번호"/>
+            <input name="prevPage" type="hidden" value=<%=request.getAttribute("prevPage")%>> />
             <input type="submit"/>
         </form>
     </div>

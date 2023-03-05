@@ -18,6 +18,8 @@ public class LoginFormCommand implements Command {
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response)
 			throws IOException, ServletException {
+		String prevPage = request.getHeader("referer");
+		request.setAttribute("prevPage", prevPage);
 		request.getRequestDispatcher(URL.LOG_IN.getViewPath()).forward(request,response);
 	}
 }

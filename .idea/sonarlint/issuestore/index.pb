@@ -15,5 +15,3 @@ L
 src/main/webapp/css/home.css,f/c/fc387d32009214d2c86c1b60a998aff5cd9d07de
 ?
 settings.gradle,0/5/05efc8b1657769a27696d478ded1e95f38737233
-M
-src/main/webapp/loginForm.jsp,8/9/89cca756b7c3aab825ff537bdf3512149a0753a1

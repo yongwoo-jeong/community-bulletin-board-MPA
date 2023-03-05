@@ -54,8 +54,8 @@ public class LoginCommand implements Command {
 		loginSession.setMaxInactiveInterval(60*60*4);
 
 		// 로그인 성공 이후 이전 페이지로 되돌려보내기
-		String prevPage = request.getHeader("referer");
-		if (StringUtil.isEmpty(prevPage)){
+		String prevPage = request.getParameter("prevPage");
+		if (StringUtil.isEmpty(prevPage) || "null".equals(prevPage)){
 			response.sendRedirect(URL.HOME.getUrlPath());
 			return;
 		}
