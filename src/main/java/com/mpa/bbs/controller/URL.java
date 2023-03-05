@@ -41,7 +41,7 @@ public enum URL {
 	 * 로그아웃
 	 * ONLY POST
 	 */
-	LOG_OUT("/logout", "", new ErrorCommand(), new LogoutCommand()),
+	LOG_OUT("/logout", "",new LogoutCommand(), new ErrorCommand() ),
 
 	/**
 	 * 회원가입

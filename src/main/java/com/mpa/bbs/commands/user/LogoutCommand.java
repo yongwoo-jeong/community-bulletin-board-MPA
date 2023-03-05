@@ -1,11 +1,11 @@
 package com.mpa.bbs.commands.user;
 
+import com.mpa.bbs.commands.Command;
 import java.io.IOException;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import com.mpa.bbs.commands.Command;
-import com.mpa.bbs.controller.URL;
+import javax.servlet.http.HttpSession;
 
 /**
  * 로그아웃 커맨드
@@ -23,9 +23,10 @@ public class LogoutCommand implements Command {
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		request.getSession();
-
-		request.getRequestDispatcher(URL.HOME.getViewPath()).forward(request, response);
+		HttpSession loginSession = request.getSession();
+		loginSession.removeAttribute("loginAccount");
+		loginSession.removeAttribute("loginUsername");
+		String prevPage = request.getHeader("referer");
+		response.sendRedirect(prevPage);
 	}
-
 }
