@@ -2,6 +2,7 @@
 <%@ page import="com.mpa.bbs.vo.FileVO" %>
 <%@ page import="java.util.List" %>
 <%@ page import="com.mpa.bbs.vo.CommentVO" %>
+<%@ page import="java.util.Objects" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
@@ -14,6 +15,7 @@
 <%
     ArticleVO article = (ArticleVO) request.getAttribute("targetArticle");
 	List<FileVO> fileList = (List<FileVO>) request.getAttribute("fileList");
+    String loggedInUser = (String) session.getAttribute("loginUsername");
 %>
 <div class="container">
     <header class="header">게시판 - 보기</header>
@@ -67,16 +69,13 @@
             <div><%=comment.getContent()%></div>
         </div>
         <% } %>
-        <div>
-            <%
-                Integer boardId = article.getBoardId();
-				Integer articleId = article.getId();
-            %>
-            <form method="post" action=/comment.new?board=<%=boardId%>&id=<%=articleId%> name="uploadComment">
-                <input name="content" class="comment_input" type="text" placeholder="댓글을 입력해주세요" />
-                <input type="submit" class="save_button" value="저장" />
-            </form>
-        </div>
+            <% if (Objects.equals(loggedInUser, null)) {%>
+            <div>댓글을 다려면 로그인 해야합니다.</div>
+        <% } else { %>
+            <jsp:include page="component/commentForm.jsp">
+                <jsp:param name="username" value='<%=loggedInUser%>'/>
+            </jsp:include>
+        <% } %>
     </div>
     <div class="button_set_container">
     </div>
