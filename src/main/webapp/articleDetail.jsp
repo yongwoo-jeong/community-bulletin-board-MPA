@@ -6,6 +6,7 @@
 <html>
 <head>
     <title>Title</title>
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/index.css" type="text/css">
 </head>
 <body>
 <jsp:include page="component/navigation.jsp"></jsp:include>
@@ -56,16 +57,16 @@
         </div>
         <% }%>
     </div>
-<%--    <div class="comments_container">--%>
-<%--        <%--%>
-<%--            List<CommentVO> commentList = (List<CommentVO>) request.getAttribute("commentList");--%>
-<%--            for (CommentVO comment : commentList){--%>
-<%--        %>--%>
-<%--        <div class="comment_row">--%>
-<%--            <div class="comment_date"><%=comment.getCreated()%></div>--%>
-<%--            <div><%=comment.getContent()%></div>--%>
-<%--        </div>--%>
-<%--        <% } %>--%>
+    <div class="comments_container">
+        <%
+            List<CommentVO> commentList = (List<CommentVO>) request.getAttribute("commentList");
+            for (CommentVO comment : commentList){
+        %>
+        <div class="comment_row">
+            <div class="comment_date"><%=comment.getCreated()%></div>
+            <div><%=comment.getContent()%></div>
+        </div>
+        <% } %>
         <div>
             <%
                 Integer boardId = article.getBoardId();

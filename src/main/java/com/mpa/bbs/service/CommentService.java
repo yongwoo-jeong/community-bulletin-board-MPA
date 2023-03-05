@@ -4,6 +4,7 @@ import com.mpa.bbs.mapper.CommentMapper;
 import com.mpa.bbs.util.BatisUtil;
 import com.mpa.bbs.vo.CommentVO;
 import java.io.IOException;
+import java.util.List;
 import org.apache.ibatis.session.SqlSession;
 
 /**
@@ -13,8 +14,9 @@ public class CommentService {
 
 	/**
 	 * 댓글 insert
+	 *
 	 * @param tableName 댓글 테이블 이름
-	 * @param comment 댓글VO
+	 * @param comment   댓글VO
 	 * @throws IOException
 	 */
 	public void insert(String tableName, CommentVO comment) throws IOException {
@@ -22,6 +24,14 @@ public class CommentService {
 		try (SqlSession sqlSession = BatisUtil.makeSession()) {
 			CommentMapper commentMapper = sqlSession.getMapper(CommentMapper.class);
 			commentMapper.insertComment(tableName, comment);
+		}
+	}
+
+	public List<CommentVO> selectCommentList(String tableName, Integer articleId)
+			throws IOException {
+		try (SqlSession sqlSession = BatisUtil.makeSession()) {
+			CommentMapper commentMapper = sqlSession.getMapper(CommentMapper.class);
+			return commentMapper.selectCommentList(tableName, articleId);
 		}
 	}
 }

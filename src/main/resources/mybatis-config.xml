@@ -23,5 +23,6 @@
     <mapper resource="./mapper/article_mapper.xml"/>
     <mapper resource="./mapper/file_mapper.xml"/>
     <mapper resource="./mapper/user_mapper.xml"/>
+    <mapper resource="./mapper/comment_mapper.xml"/>
   </mappers>
 </configuration>

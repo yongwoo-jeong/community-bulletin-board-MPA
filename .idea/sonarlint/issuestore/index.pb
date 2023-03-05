@@ -37,8 +37,6 @@ i
 9src/main/webapp/css/bootstrap/css/bootstrap-utilities.css,2/d/2d94e2b8c13fa78eb3adc0fdc3dd9f2f455302c3
 L
 src/main/webapp/css/home.css,f/c/fc387d32009214d2c86c1b60a998aff5cd9d07de
-M
-src/main/webapp/css/index.css,7/8/7839e85e628b9e7f25e4d84a018e9af3b9754b15
 ?
 settings.gradle,0/5/05efc8b1657769a27696d478ded1e95f38737233
 g
