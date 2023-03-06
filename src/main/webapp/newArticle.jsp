@@ -2,10 +2,13 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>Title</title>
+    <jsp:include page="component/title.jsp">
+        <jsp:param name="titleValue" value="새 게시글" />
+    </jsp:include>
 </head>
 <body>
 <main>
+    <% String loggedInUser = (String) session.getAttribute("loginUsername"); %>
     <form method="post" enctype="multipart/form-data" action=<%=ClientUtil.getUrls().get("NEW_NOTICE")%>>
         <table style="border-collapse: collapse">
             <tr>
@@ -21,15 +24,10 @@
                 </td>
             </tr>
             <tr>
-                <th>작성자*</th>
-                <td>
-                    <input type="text" name="writer" />
-                </td>
-            </tr>
-            <tr>
                 <th>제목*</th>
                 <td>
                     <input name="title" type="text" />
+                    <input name="writer" value=<%=loggedInUser%> type="hidden">
                 </td>
             </tr>
             <tr>

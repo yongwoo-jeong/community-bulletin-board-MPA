@@ -1,12 +1,8 @@
 
 R
 "src/main/webapp/css/navigation.css,8/8/8857ad4397e87a3607ffd318623e3a1860bf1845
-L
-src/main/webapp/js/signUp.js,d/0/d066657de05376e4ec532fa3fb72150bd87c70ef
 7
 gradlew,5/b/5bbfa66edb4db3c7c33c5181f43510990d3307f9
-J
-src/main/webapp/signUp.jsp,7/b/7b0c32abc225a368002b6348bd3471d95d4d582a
 i
 9src/main/webapp/css/bootstrap/css/bootstrap-utilities.css,2/d/2d94e2b8c13fa78eb3adc0fdc3dd9f2f455302c3
 L

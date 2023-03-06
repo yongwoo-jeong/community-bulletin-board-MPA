@@ -13,9 +13,10 @@
 <jsp:include page="component/navigation.jsp"></jsp:include>
 <br/>
 <%
+    // 대상 게시글
     ArticleVO article = (ArticleVO) request.getAttribute("targetArticle");
-	List<FileVO> fileList = (List<FileVO>) request.getAttribute("fileList");
-    String loggedInUser = (String) session.getAttribute("loginUsername");
+    // 첨부된 파일리스트
+    List<FileVO> fileList = (List<FileVO>) request.getAttribute("fileList");
 %>
 <div class="container">
     <header class="header">게시판 - 보기</header>
@@ -53,32 +54,14 @@
         %>
         <div class="file">
             <a>💾</a>
-            <a href=/download?board=notice&uuid=<%=file.getUuid()%>>
+            <a href=${pageContext.request.contextPath}/download?board=notice&uuid=<%=file.getUuid()%>>
                 <%=file.getNameOriginal()%>
             </a>
         </div>
         <% }%>
     </div>
-    <div class="comments_container">
-        <%
-            List<CommentVO> commentList = (List<CommentVO>) request.getAttribute("commentList");
-            for (CommentVO comment : commentList){
-        %>
-        <div class="comment_row">
-            <div class="comment_date"><%=comment.getCreated()%></div>
-            <div><%=comment.getContent()%></div>
-        </div>
-        <% } %>
-            <% if (Objects.equals(loggedInUser, null)) {%>
-            <div>댓글을 다려면 로그인 해야합니다.</div>
-        <% } else { %>
-            <jsp:include page="component/commentForm.jsp">
-                <jsp:param name="username" value='<%=loggedInUser%>'/>
-            </jsp:include>
-        <% } %>
-    </div>
-    <div class="button_set_container">
-    </div>
+    <jsp:include page="component/comment.jsp" ></jsp:include>
+    <div class="button_set_container"></div>
 </div>
 </body>
 </html>
