@@ -1,5 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ page import="com.mpa.bbs.util.ClientUtil" %>
+<%
+    String loginUsername = (String) session.getAttribute("loginUsername");
+    String loginAccount = (String) session.getAttribute("loginAccount");
+%>
 
 <nav>
     <div>
@@ -18,9 +22,8 @@
     </div>
     <div>
         <div>
-            <%  String loginUsername = (String) session.getAttribute("loginUsername");
-                String loginAccount = (String) session.getAttribute("loginAccount");
-                if (loginUsername ==null){%>
+
+                <% if (loginUsername ==null){%>
                     <a class="nav__anchor" href=<%=ClientUtil.getUrls().get("LOG_IN")%>>로그인</a>
                     <a class="nav__anchor" href=<%=ClientUtil.getUrls().get("SIGN_UP")%>>회원가입</a>
                 <% } else { %>

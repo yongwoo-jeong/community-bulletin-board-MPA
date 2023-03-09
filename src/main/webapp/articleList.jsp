@@ -1,8 +1,12 @@
-<%@ page import="java.net.URLEncoder" %>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ page import="com.mpa.bbs.util.ClientUtil" %>
 <%@ page import="com.mpa.bbs.vo.ArticleVO" %>
 <%@ page import="java.util.List" %>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%
+  List<ArticleVO> articleList = (List<ArticleVO>) request.getAttribute("articleList");
+  List<Integer> articleListFileAttached = (List<Integer>) request.getAttribute("articleListFileAttached");
+  String loginUsername = (String) session.getAttribute("loginUsername");
+%>
 <html>
 <head>
   <jsp:include page="component/title.jsp">
@@ -24,10 +28,7 @@
       <th>등록일</th>
       <th>수정일</th>
     </tr>
-    <%-- 게시글 리스트, 파일첨부된 게시글 ID 리스트    --%>
-    <% List<ArticleVO> articleList = (List<ArticleVO>) request.getAttribute("articleList");
-       List<Integer> articleListFileAttached = (List<Integer>) request.getAttribute("articleListFileAttached");
-      for (ArticleVO article : articleList) { %>
+      <% for (ArticleVO article : articleList) { %>
     <tr>
       <%-- 파일 첨부 게시글 ID 리스트에 포함될 경우 아이콘 표시      --%>
       <% if (articleListFileAttached.contains(article.getId())){ %>
@@ -45,7 +46,11 @@
   </table>
 </main>
 <jsp:include page="component/pagination.jsp"></jsp:include>
-<div class="border-1" role="button" onclick="location.href='<%=ClientUtil.getUrls().get("NEW_NOTICE")%>'" >글쓰기</div>
+
+<% if (loginUsername != null) {%>
+<div class="border-1" role="button" onclick="location.href='<%=ClientUtil.getUrls().get("NEW_NOTICE")%>'">글쓰기</div>
+<% } %>
+
 <script src="js/navigation.js"></script>
 </body>
 </html>

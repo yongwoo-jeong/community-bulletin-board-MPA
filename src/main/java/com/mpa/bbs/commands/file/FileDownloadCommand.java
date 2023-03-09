@@ -1,8 +1,8 @@
 package com.mpa.bbs.commands.file;
 
 import com.mpa.bbs.commands.Command;
+import com.mpa.bbs.service.BoardType;
 import com.mpa.bbs.service.FileService;
-import com.mpa.bbs.service.TableName;
 import com.mpa.bbs.vo.FileVO;
 import java.io.File;
 import java.io.FileInputStream;
@@ -24,7 +24,7 @@ public class FileDownloadCommand implements Command {
 			throws ServletException, IOException {
 		String fileUuid = request.getParameter("uuid");
 		String boardType = request.getParameter("board");
-		FileVO downloadingFile = new FileService().select(TableName.NOTICE.getFileTable() ,fileUuid);
+		FileVO downloadingFile = new FileService().select(BoardType.NOTICE.getFileTable() ,fileUuid);
 		String filePath = downloadingFile.getPath();
 		String fileName = downloadingFile.getNameOnServer();
 

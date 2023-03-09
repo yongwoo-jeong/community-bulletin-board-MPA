@@ -2,8 +2,8 @@ package com.mpa.bbs.commands.article;
 
 import com.mpa.bbs.commands.Command;
 import com.mpa.bbs.service.ArticleService;
+import com.mpa.bbs.service.BoardType;
 import com.mpa.bbs.service.FileService;
-import com.mpa.bbs.service.TableName;
 import com.mpa.bbs.util.StringUtil;
 import com.mpa.bbs.vo.ArticleVO;
 import com.mpa.bbs.vo.FileVO;
@@ -65,8 +65,8 @@ public class ArticleInsertCommand implements Command {
 			validFiles.add(newFile);
 		}
 
-		String articleTable = TableName.NOTICE.getArticleTable();
-		String fileTable = TableName.NOTICE.getFileTable();
+		String articleTable = BoardType.NOTICE.getArticleTable();
+		String fileTable = BoardType.NOTICE.getFileTable();
 		articleService.insert(articleTable, newArticle);
 		Integer newArticleId = newArticle.getId();
 		fileService.insert(fileTable, validFiles, newArticleId );

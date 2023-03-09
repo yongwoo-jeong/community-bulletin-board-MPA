@@ -47,7 +47,7 @@ public enum URL {
 	 * 회원가입
 	 * GET POST 존재
 	 */
-	SIGN_UP("/signup", "/signUp.jsp", new SignupFormCommand(), new SignupCommand()),
+	SIGN_UP("/signup", "/signupForm.jsp", new SignupFormCommand(), new SignupCommand()),
 
 	/**
 	 * 프로필 수정
@@ -71,7 +71,7 @@ public enum URL {
 	 * 공지사항 새 게시글
 	 * ONLY GET
 	 */
-	NEW_NOTICE("/notice.new", "/newArticle.jsp", new ArticleFormCommand(), new ArticleInsertCommand()),
+	NEW_NOTICE("/notice.new", "/articleForm.jsp", new ArticleFormCommand(), new ArticleInsertCommand()),
 
 	/**
 	 * 게시글 디테일

@@ -1,7 +1,7 @@
 /**
  * 유저 입력값 검증을 위한 클래스
  */
-class FormValidator {
+export class FormValidator {
   constructor(element, regex) {
     /**
      * 타겟 필드
@@ -52,5 +52,3 @@ class FormValidator {
     }
   }
 }
-
-export default FormValidator;

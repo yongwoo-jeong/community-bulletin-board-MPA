@@ -25,7 +25,7 @@
     </div>
     <% } %>
     <% if (Objects.equals(loggedInUser, null)) {%>
-    <div>댓글을 다려면 로그인 해야합니다.</div>
+    <input type="text" disabled placeholder="먼저 로그인 해야합니다" />
     <% } else { %>
     <div>
         <form method="post" action=/comment.new?board=<%=boardId%>&id=<%=articleId%>

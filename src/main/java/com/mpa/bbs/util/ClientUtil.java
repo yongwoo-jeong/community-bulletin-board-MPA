@@ -18,5 +18,8 @@ public class ClientUtil {
 		}
 		return urlMap;
 	}
-
+//
+//	public boolean userAuthorization(){
+//
+//	}
 }

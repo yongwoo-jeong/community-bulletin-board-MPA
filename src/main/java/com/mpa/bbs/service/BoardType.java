@@ -11,7 +11,7 @@ import lombok.Getter;
  */
 @Getter
 @AllArgsConstructor
-public enum TableName {
+public enum BoardType {
 	/**
 	 * 공지사항
 	 */
@@ -50,10 +50,10 @@ public enum TableName {
 	 */
 	private final Integer boardId;
 
-	public static TableName getConstantById(Integer boardId) {
-		for (TableName tableName : TableName.values()) {
-			if (Objects.equals(tableName.getBoardId(), boardId)) {
-				return tableName;
+	public static BoardType getConstantById(Integer boardId) {
+		for (BoardType boardType : BoardType.values()) {
+			if (Objects.equals(boardType.getBoardId(), boardId)) {
+				return boardType;
 			}
 		}
 		return null;
@@ -61,8 +61,8 @@ public enum TableName {
 
 	public static List<Integer> getBoardIdList(){
 		List<Integer> boardIdList=  new ArrayList<>();
-		for (TableName tableName : TableName.values()) {
-			boardIdList.add(tableName.getBoardId());
+		for (BoardType boardType : BoardType.values()) {
+			boardIdList.add(boardType.getBoardId());
 		}
 		return boardIdList;
 	}

@@ -1,8 +1,10 @@
 package com.mpa.bbs.service;
 
 import com.mpa.bbs.mapper.ArticleMapper;
+import com.mpa.bbs.mapper.BoardMapper;
 import com.mpa.bbs.util.BatisUtil;
 import com.mpa.bbs.vo.ArticleVO;
+import com.mpa.bbs.vo.BoardVO;
 import com.mpa.bbs.vo.SearchVO;
 import java.io.IOException;
 import java.util.List;
@@ -56,6 +58,13 @@ public class ArticleService {
 		try (SqlSession sqlSession = BatisUtil.makeSession()) {
 			ArticleMapper articleMapper = sqlSession.getMapper(ArticleMapper.class);
 			return articleMapper.selectSearchedArticles(tableName, searchCriteria);
+		}
+	}
+
+	public List<BoardVO> selectAllBoard() throws IOException {
+		try (SqlSession sqlSession = BatisUtil.makeSession()) {
+			BoardMapper boardMapper = sqlSession.getMapper(BoardMapper.class);
+			return boardMapper.selectAllBoard();
 		}
 	}
 

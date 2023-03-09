@@ -29,12 +29,14 @@
                     <input name="title" type="text" />
                     <input name="writer" value=<%=loggedInUser%> type="hidden">
                 </td>
+                <td>4~30자</td>
             </tr>
             <tr>
                 <th>내용*</th>
                 <td>
                     <input name="content" type="text" />
                 </td>
+                <td>10~2000자</td>
             </tr>
             <tr>
                 <th>파일 첨부</th>
@@ -49,6 +51,7 @@
             <input type="submit" />
         </div>
     </form>
+<script src="js/articleForm.js" type="module"></script>
 </main>
 </body>
 </html>

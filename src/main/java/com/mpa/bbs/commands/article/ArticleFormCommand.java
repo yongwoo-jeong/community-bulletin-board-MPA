@@ -5,6 +5,7 @@ import java.io.IOException;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  * 새 게시글 FORM
@@ -14,6 +15,8 @@ public class ArticleFormCommand implements Command {
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		request.getRequestDispatcher("/newArticle.jsp").forward(request,response);
+		HttpSession loginSession = request.getSession();
+		loginSession.removeAttribute("loginAccount");
+		request.getRequestDispatcher("/articleForm.jsp").forward(request,response);
 	}
 }
