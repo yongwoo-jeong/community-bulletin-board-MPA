@@ -28,6 +28,13 @@ public class FileService {
 		}
 	}
 
+	/**
+	 * 파일다운로드를 위한 튜플 반환
+	 * @param tableName
+	 * @param fileUuid
+	 * @return
+	 * @throws IOException
+	 */
 	public FileVO select(String tableName, String fileUuid) throws IOException {
 		try (SqlSession sqlSession = BatisUtil.makeSession()) {
 			FileMapper fileMapper = sqlSession.getMapper(FileMapper.class);
@@ -35,6 +42,13 @@ public class FileService {
 		}
 	}
 
+	/**
+	 * 게시글에 따른 파일 반환
+	 * @param tableName
+	 * @param articleId
+	 * @return
+	 * @throws IOException
+	 */
 	public List<FileVO> selectFileList(String tableName, Integer articleId) throws IOException {
 		try (SqlSession sqlSession = BatisUtil.makeSession()) {
 			FileMapper fileMapper = sqlSession.getMapper(FileMapper.class);
@@ -42,6 +56,15 @@ public class FileService {
 		}
 	}
 
+	/**
+	 * 게시글 리스트 페이지에서 쓰일 파일 첨부 여부
+	 * @param fileTable
+	 * @param articleTableInteger
+	 * @param dbOffsetStart
+	 * @param dbOffsetEnd
+	 * @return
+	 * @throws IOException
+	 */
 	public List<Integer> selectIsFileAttached(String fileTable, String articleTableInteger, Integer dbOffsetStart, Integer dbOffsetEnd) throws IOException {
 		try (SqlSession sqlSession = BatisUtil.makeSession()) {
 			FileMapper fileMapper = sqlSession.getMapper(FileMapper.class);

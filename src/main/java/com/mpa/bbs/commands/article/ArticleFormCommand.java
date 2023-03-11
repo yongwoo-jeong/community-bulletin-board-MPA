@@ -17,6 +17,6 @@ public class ArticleFormCommand implements Command {
 			throws ServletException, IOException {
 		HttpSession loginSession = request.getSession();
 		loginSession.removeAttribute("loginAccount");
-		request.getRequestDispatcher("/articleForm.jsp").forward(request,response);
+		request.getRequestDispatcher("/noticeForm.jsp").forward(request,response);
 	}
 }

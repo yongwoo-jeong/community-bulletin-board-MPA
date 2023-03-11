@@ -35,22 +35,20 @@ public class LoginCommand implements Command {
 		UserVO targetUser = new UserService().selectUser(userInputAccount);
 
 		// 로그인 실패 로직
-		String errorMessage = "errorMessage";
 		if (targetUser == null){
-			request.setAttribute(errorMessage, LoginError.INVALID_ACCOUNT.getErrorMessage());
-			response.sendError(400);
+			request.setAttribute("errorMessage", LoginError.INVALID_ACCOUNT.getErrorMessage());
+			response.sendError(LoginError.INVALID_ACCOUNT.getHttpStatus());
 			return;
 		}
 		if (!BCrypt.checkpw(userInputPassword, targetUser.getPassword())) {
-			request.setAttribute(errorMessage, LoginError.INCORRECT_PASSWORD.getErrorMessage());
-			response.sendError(400);
+			request.setAttribute("errorMessage", LoginError.INCORRECT_PASSWORD.getErrorMessage());
+			response.sendError(LoginError.INCORRECT_PASSWORD.getHttpStatus());
 			return;
 		}
 
 		// 로그인 성공 시 세션 생성
 		HttpSession loginSession = request.getSession();
-		loginSession.setAttribute("loginAccount", targetUser.getAccount());
-		loginSession.setAttribute("loginUsername", targetUser.getUserName());
+		loginSession.setAttribute("loginUser", targetUser);
 		loginSession.setMaxInactiveInterval(60*60*4);
 
 		// 로그인 성공 이후 이전 페이지로 되돌려보내기

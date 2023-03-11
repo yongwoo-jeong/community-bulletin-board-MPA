@@ -6,7 +6,7 @@
   <!-- 파일 다운로드 - 파일 튜플 반환  -->
   <select id="select" resultType="com.mpa.bbs.vo.FileVO">
     SELECT *
-    FROM   ${boardType}
+    FROM   ${tableName}
     WHERE  uuid = #{fileUuid}
   </select>
 
@@ -21,7 +21,7 @@
   <!-- 게시글 상세 - 파일 리스트 반환  -->
   <select id="selectFileList" resultType="com.mpa.bbs.vo.FileVO">
     SELECT *
-    FROM   ${boardType}
+    FROM   ${tableName}
     WHERE  article_id = #{articleId}
   </select>
 
@@ -29,7 +29,7 @@
 
   <!-- 새 파일 삽입  -->
   <insert id="insertFile">
-    INSERT INTO ${boardType}
+    INSERT INTO ${tableName}
     (
     uuid,
     name_on_server,

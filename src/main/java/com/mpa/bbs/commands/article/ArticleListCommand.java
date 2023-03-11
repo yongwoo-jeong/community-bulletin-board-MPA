@@ -28,6 +28,7 @@ public class ArticleListCommand implements Command {
 		// request URI 에 따른 게시판 유형
 		Map<String, BoardType> tableNameMap = new HashMap<>();
 		tableNameMap.put(URL.NOTICE.getUrlPath(), BoardType.NOTICE);
+
 		BoardType boardType = tableNameMap.get(request.getRequestURI());
 		// DB 테이블명
 		String tableName = boardType.getArticleTable();
@@ -36,9 +37,6 @@ public class ArticleListCommand implements Command {
 
 		// 검색조건
 		SearchVO searchCriteria = SearchVO.builder().build();
-		String keyword = request.getParameter("keyword");
-		String startDate = request.getParameter("startDate");
-		String endDate = request.getParameter("endDate");
 		String currentPage = request.getParameter("currentPage");
 		Integer parsedCurrentPage = null;
 		if (!StringUtil.isEmpty(currentPage)) {

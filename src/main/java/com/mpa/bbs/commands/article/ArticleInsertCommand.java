@@ -1,12 +1,14 @@
 package com.mpa.bbs.commands.article;
 
 import com.mpa.bbs.commands.Command;
+import com.mpa.bbs.error.LoginError;
 import com.mpa.bbs.service.ArticleService;
 import com.mpa.bbs.service.BoardType;
 import com.mpa.bbs.service.FileService;
 import com.mpa.bbs.util.StringUtil;
 import com.mpa.bbs.vo.ArticleVO;
 import com.mpa.bbs.vo.FileVO;
+import com.mpa.bbs.vo.UserVO;
 import com.oreilly.servlet.MultipartRequest;
 import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
 import com.oreilly.servlet.multipart.FileRenamePolicy;
@@ -26,22 +28,37 @@ public class ArticleInsertCommand implements Command {
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		// 멀티파트 파라미터
+
+		UserVO loginUser = (UserVO) request.getSession().getAttribute("loginUser");
+		// 로그인되지 않은 경우 에러페이지
+		if (loginUser==null){
+			request.setAttribute("errorMessage", LoginError.NOT_LOGIN_USER.getErrorMessage());
+			response.sendError(LoginError.NOT_LOGIN_USER.getHttpStatus());
+			return;
+		}
+
+		// 게시판 유형 URI 를 통해 식별
+		String path = request.getRequestURI();
+		String boardType = path.substring(path.lastIndexOf('/') + 1, path.lastIndexOf('.')).toUpperCase();
+		Integer boardId = BoardType.valueOf(boardType).getBoardId();
+
+		// 멀티파트 파일 저장 경로
 		String fileDirectory = new StringUtil().getProperties("multipart.saveDirectory");
 		File directoryExists = new File(fileDirectory);
 		// 파일 저장 폴더 없을경우 생성
 		if (!directoryExists.exists()){
 			directoryExists.mkdirs();
 		}
+		// 파일 설정
 		int maxFileSize = 1024 * 1024 * 5;
 		FileRenamePolicy fileRenamePolicy = new DefaultFileRenamePolicy();
 		MultipartRequest multipartRequest = new MultipartRequest(request, fileDirectory, maxFileSize, "UTF-8", fileRenamePolicy);
 
-		String writer = multipartRequest.getParameter("writer");
+		// 게시글 정보
 		String title = multipartRequest.getParameter("title");
 		String content = multipartRequest.getParameter("content");
-		ArticleVO newArticle = ArticleVO.builder().title(title).writer(writer).content(content)
-				.boardId(0).build();
+		ArticleVO newArticle = ArticleVO.builder().title(title).writer(loginUser.getUserName()).content(content)
+				.boardId(boardId).build();
 
 		ArticleService articleService = new ArticleService();
 		FileService fileService = new FileService();

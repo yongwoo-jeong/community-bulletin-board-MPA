@@ -15,6 +15,12 @@ import org.apache.ibatis.session.SqlSession;
  */
 public class ArticleService {
 
+//	private boolean valid(){
+////		HttpSession loginSession = request.getSession();
+////		loginSession.setAttribute("loginAccount", targetUser.getAccount());
+////		loginSession.setAttribute("loginUsername", targetUser.getUserName());
+//	}
+
 	/**
 	 * 게시글 검증 후 레포지토리 통해 insert
 	 * @param newArticle

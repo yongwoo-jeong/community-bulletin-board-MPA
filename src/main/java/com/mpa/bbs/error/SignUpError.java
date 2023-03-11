@@ -23,6 +23,9 @@ public enum SignUpError {
 	 */
 	private final String errorMessage;
 
+	/**
+	 * HTTP STATUS
+	 */
 	private final Integer httpStatus;
 
 }

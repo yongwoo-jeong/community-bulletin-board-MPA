@@ -71,7 +71,7 @@ public enum URL {
 	 * 공지사항 새 게시글
 	 * ONLY GET
 	 */
-	NEW_NOTICE("/notice.new", "/articleForm.jsp", new ArticleFormCommand(), new ArticleInsertCommand()),
+	NEW_NOTICE("/notice.new", "/noticeForm.jsp", new ArticleFormCommand(), new ArticleInsertCommand()),
 
 	/**
 	 * 게시글 디테일
@@ -109,6 +109,7 @@ public enum URL {
 	 * post 요청 커맨드
 	 */
 	private final Command postCommand;
+
 
 	public static Command getCommandByUrl(String requestedUrl) {
 		for (URL urlValue : URL.values()) {
