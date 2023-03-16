@@ -26,14 +26,12 @@ public class ArticleListCommand implements Command {
 	public void execute(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		// request URI 에 따른 게시판 유형
+		// TODO map 없이 enum 값으로만 가능
 		Map<String, BoardType> tableNameMap = new HashMap<>();
 		tableNameMap.put(URL.NOTICE.getUrlPath(), BoardType.NOTICE);
-
-		BoardType boardType = tableNameMap.get(request.getRequestURI());
 		// DB 테이블명
+		BoardType boardType = tableNameMap.get(request.getRequestURI());
 		String tableName = boardType.getArticleTable();
-		// 게시판 ID
-		Integer boardId = boardType.getBoardId();
 
 		// 검색조건
 		SearchVO searchCriteria = SearchVO.builder().build();

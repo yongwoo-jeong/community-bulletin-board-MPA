@@ -47,9 +47,11 @@ public class LoginCommand implements Command {
 		}
 
 		// 로그인 성공 시 세션 생성
-		HttpSession loginSession = request.getSession();
-		loginSession.setAttribute("loginUser", targetUser);
-		loginSession.setMaxInactiveInterval(60*60*4);
+		HttpSession session = request.getSession(true);
+		session.setAttribute("isLogin", true);
+		session.setAttribute("loginUserAccount", targetUser.getAccount());
+		session.setAttribute("loginUserName", targetUser.getUserName());
+		session.setMaxInactiveInterval(60*60*4);
 
 		// 로그인 성공 이후 이전 페이지로 되돌려보내기
 		String prevPage = request.getParameter("prevPage");

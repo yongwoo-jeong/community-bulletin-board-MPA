@@ -38,3 +38,4 @@ public class BatisUtil {
 		return sqlSessionFactory.openSession(true);
 	}
 }
+

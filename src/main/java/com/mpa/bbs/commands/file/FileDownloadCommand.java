@@ -27,10 +27,8 @@ public class FileDownloadCommand implements Command {
 		FileVO downloadingFile = new FileService().select(BoardType.NOTICE.getFileTable() ,fileUuid);
 		String filePath = downloadingFile.getPath();
 		String fileName = downloadingFile.getNameOnServer();
-
 		OutputStream out = response.getOutputStream();
 		File file = new File(filePath+fileName);
-
 		String originalName = downloadingFile.getNameOriginal();
 		// TODO 파일이 정상적으로 UTF8 인코딩 되었지만 이 과정을 거치지 않으면 파일명이 정상출력 되지 않음.
 		String encodedFileName = URLEncoder.encode(originalName, "UTF-8").replace("+", "%20");
@@ -38,8 +36,7 @@ public class FileDownloadCommand implements Command {
 		response.addHeader("Content-disposition", "attachment; filename=" +  encodedFileName);
 
 		try (FileInputStream in = new FileInputStream(file)) {
-			byte[] buffer = new byte[downloadingFile.getSize()];
-
+			byte[] buffer = new byte[1024];
 			while (true) {
 				int count = in.read(buffer);
 				if (count == -1) {

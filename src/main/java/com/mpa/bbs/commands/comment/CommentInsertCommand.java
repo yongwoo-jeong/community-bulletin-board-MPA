@@ -32,6 +32,7 @@ public class CommentInsertCommand implements Command {
 		if (!boardIdList.contains(boardId)){
 			response.sendError(403);
 		}
+
 		String boardType = BoardType.getConstantById(boardId).getCommentTable();
 		Integer articleId = Integer.valueOf(request.getParameter("id"));
 		String content = request.getParameter("content");
