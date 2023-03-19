@@ -26,7 +26,7 @@
     <div>
         <div>
 
-                <% if (!isLogin){%>
+                <% if (isLogin == null || !isLogin){%>
                     <a class="nav__anchor" href=<%=ClientUtil.getUrls().get("LOG_IN")%>>로그인</a>
                     <a class="nav__anchor" href=<%=ClientUtil.getUrls().get("SIGN_UP")%>>회원가입</a>
                 <% } else { %>

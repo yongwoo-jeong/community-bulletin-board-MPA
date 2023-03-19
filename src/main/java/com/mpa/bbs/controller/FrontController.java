@@ -26,7 +26,7 @@ public class FrontController extends HttpServlet {
 	public void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		String uri = request.getRequestURI();
-		Command action = URL.getCommandByUrl(uri);
+		Command action = new UrlMap().getCommand(uri);
 		action.execute(request, response);
 	}
 

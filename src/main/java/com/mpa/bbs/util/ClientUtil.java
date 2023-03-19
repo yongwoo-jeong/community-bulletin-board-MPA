@@ -14,7 +14,7 @@ public class ClientUtil {
 	public static Map<String, String> getUrls(){
 		Map<String, String> urlMap = new HashMap<>();
 		for (URL url: urlList) {
-			urlMap.put(url.name() ,url.getUrlPath());
+//			urlMap.put(url.name() ,url.getUrlPath());
 		}
 		return urlMap;
 	}
