@@ -18,5 +18,4 @@ public interface Command {
 	 */
 	View execute(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException;
-
 }

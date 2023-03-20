@@ -19,7 +19,7 @@ import java.util.Map;
 /**
  * URL 주소 - 커맨드 맵
  */
-public class UrlMap {
+public class CommandMap {
 
 	/**
 	 * GET 요청 커맨드 맵
@@ -33,23 +33,23 @@ public class UrlMap {
 	/**
 	 * 디폴트 생성자
 	 */
-	public UrlMap() {
+	public CommandMap() {
 		// GET 요청 URL, 커맨드
 		getCommand = new HashMap<>();
-		getCommand.put("/home", new HomeCommand());
-		getCommand.put("/signup", new SignupFormCommand());
-		getCommand.put("/login", new LoginFormCommand());
-		getCommand.put("/logout", new LogoutCommand());
-		getCommand.put("/notice", new ArticleListCommand());
-		getCommand.put("/notice.new", new ArticleFormCommand());
-		getCommand.put("/noticeDetail", new ArticleDetailCommand());
-		getCommand.put("/download", new FileDownloadCommand());
+		getCommand.put(URL.HOME.getUrl(), new HomeCommand());
+		getCommand.put(URL.SIGNUP.getUrl(), new SignupFormCommand());
+		getCommand.put(URL.LOGIN.getUrl(), new LoginFormCommand());
+		getCommand.put(URL.LOGOUT.getUrl(), new LogoutCommand());
+		getCommand.put(URL.NOTICE.getUrl(), new ArticleListCommand());
+		getCommand.put(URL.NEW_NOTICE.getUrl(), new ArticleFormCommand());
+		getCommand.put(URL.NOTICE_DETAIL.getUrl(), new ArticleDetailCommand());
+		getCommand.put(URL.FILE_DOWNLOAD.getUrl(), new FileDownloadCommand());
 		// POST 요청 URL, 커맨드
 		postCommand = new HashMap<>();
-		postCommand.put("/login", new LoginCommand());
-		postCommand.put("/signup", new SignupCommand());
-		postCommand.put("/notice.new", new ArticleInsertCommand());
-		postCommand.put("/comment.new", new CommentInsertCommand());
+		postCommand.put(URL.LOGIN.getUrl(), new LoginCommand());
+		postCommand.put(URL.SIGNUP.getUrl(), new SignupCommand());
+		postCommand.put(URL.NEW_NOTICE.getUrl(), new ArticleInsertCommand());
+		postCommand.put(URL.NEW_COMMENT.getUrl(), new CommentInsertCommand());
 	}
 
 	/**

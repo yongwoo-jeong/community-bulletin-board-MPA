@@ -15,7 +15,7 @@ public enum BoardType {
 	/**
 	 * 공지사항
 	 */
-	NOTICE("notice_article","notice_file", "notice_comment", 0),
+	NOTICE("notice_article", "notice_file", "notice_comment", 0),
 	/**
 	 * 자유게시판
 	 */
@@ -59,13 +59,21 @@ public enum BoardType {
 		return null;
 	}
 
-	public static List<Integer> getBoardIdList(){
-		List<Integer> boardIdList=  new ArrayList<>();
+	public static List<Integer> getBoardIdList() {
+		List<Integer> boardIdList = new ArrayList<>();
 		for (BoardType boardType : BoardType.values()) {
 			boardIdList.add(boardType.getBoardId());
 		}
 		return boardIdList;
 	}
 
-
+	public static BoardType getConstantByUri(String uri) {
+		for (BoardType boardType : BoardType.values()) {
+			if (uri.startsWith("/" + boardType.name().toLowerCase())) {
+				return boardType;
+			}
+		}
+		// Null return 보다 커스텀 예외 던지기
+		return null;
+	}
 }

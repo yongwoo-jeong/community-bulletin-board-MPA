@@ -1,4 +1,4 @@
-<%@ page import="com.mpa.bbs.util.ClientUtil" %>
+<%@ page import="com.mpa.bbs.controller.URL" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
          pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -15,7 +15,7 @@
 <main class="board mx-lg-2">
    <div class="row">
        <section class="board__notice col col-lg">
-           <div onclick="location.href='<%=ClientUtil.getUrls().get("NOTICE")%>'" class="section__header bg-secondary text-white h3 ps-2">공지사항</div>
+           <div onclick="location.href='<%=URL.NOTICE.getUrl()%>'" class="section__header bg-secondary text-white h3 ps-2">공지사항</div>
            <div class="article-list__container">
                <table>
                    <tr>

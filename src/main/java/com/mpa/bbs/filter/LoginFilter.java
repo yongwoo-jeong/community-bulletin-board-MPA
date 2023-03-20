@@ -1,6 +1,6 @@
 package com.mpa.bbs.filter;
 
-import com.mpa.bbs.controller.URL;
+import com.mpa.bbs.controller.ViewPath;
 import java.io.IOException;
 import javax.servlet.Filter;
 import javax.servlet.FilterChain;
@@ -23,11 +23,11 @@ public class LoginFilter implements Filter {
 		HttpServletRequest req = (HttpServletRequest) request;
 		HttpSession session = req.getSession(false);
 		if (session == null){
-			req.getRequestDispatcher(URL.LOG_IN.getViewPath()).forward(request, response);
+			req.getRequestDispatcher(ViewPath.LOG_IN.getJspPath()).forward(request, response);
 		}
 		Boolean isLogin = (Boolean) session.getAttribute("isLogin");
 		if (Boolean.FALSE.equals(isLogin)){
-			req.getRequestDispatcher(URL.LOG_IN.getViewPath()).forward(request, response);
+			req.getRequestDispatcher(ViewPath.LOG_IN.getJspPath()).forward(request, response);
 		}
 		// TODO: 2023/03/17 에외 핸들러 어떻게 구성할지?
 		chain.doFilter(request, response);

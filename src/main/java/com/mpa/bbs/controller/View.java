@@ -49,6 +49,7 @@ public class View {
 			response.sendRedirect(this.viewPath);
 			return;
 		}
+		System.out.println(this.viewPath);
 		request.getRequestDispatcher(this.viewPath).forward(request,response);
 	}
 
