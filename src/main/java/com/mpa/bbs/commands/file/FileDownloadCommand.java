@@ -1,6 +1,7 @@
 package com.mpa.bbs.commands.file;
 
 import com.mpa.bbs.commands.Command;
+import com.mpa.bbs.controller.View;
 import com.mpa.bbs.service.BoardType;
 import com.mpa.bbs.service.FileService;
 import com.mpa.bbs.vo.FileVO;
@@ -20,7 +21,7 @@ import javax.servlet.http.HttpServletResponse;
 public class FileDownloadCommand implements Command {
 
 	@Override
-	public void execute(HttpServletRequest request, HttpServletResponse response)
+	public View execute(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		String fileUuid = request.getParameter("uuid");
 		String boardType = request.getParameter("board");
@@ -46,5 +47,6 @@ public class FileDownloadCommand implements Command {
 			}
 		}
 		out.close();
+		return new View("");
 	}
 }

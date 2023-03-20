@@ -1,6 +1,7 @@
 package com.mpa.bbs.commands.article;
 
 import com.mpa.bbs.commands.Command;
+import com.mpa.bbs.controller.View;
 import com.mpa.bbs.service.ArticleService;
 import com.mpa.bbs.service.BoardType;
 import com.mpa.bbs.service.FileService;
@@ -25,7 +26,7 @@ import javax.servlet.http.HttpSession;
  */
 public class ArticleInsertCommand implements Command {
 	@Override
-	public void execute(HttpServletRequest request, HttpServletResponse response)
+	public View execute(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
 		HttpSession session = request.getSession(false);
@@ -84,7 +85,7 @@ public class ArticleInsertCommand implements Command {
 		Integer newArticleId = newArticle.getId();
 		fileService.insert(fileTable, validFiles, newArticleId );
 
-		response.sendRedirect("/noticeDetail?id="+newArticleId);
+		return new View("/noticeDetail?id="+newArticleId, true);
 	}
 
 }

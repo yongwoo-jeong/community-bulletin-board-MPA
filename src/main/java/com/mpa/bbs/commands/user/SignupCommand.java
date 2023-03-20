@@ -1,7 +1,7 @@
 package com.mpa.bbs.commands.user;
 
 import com.mpa.bbs.commands.Command;
-import com.mpa.bbs.controller.URL;
+import com.mpa.bbs.controller.View;
 import com.mpa.bbs.error.LoginError;
 import com.mpa.bbs.error.SignUpError;
 import com.mpa.bbs.service.UserService;
@@ -19,7 +19,7 @@ import org.mindrot.jbcrypt.BCrypt;
 public class SignupCommand implements Command {
 
 	@Override
-	public void execute(HttpServletRequest request, HttpServletResponse response)
+	public View execute(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		// 회원가입정보
 		String account = request.getParameter("account");
@@ -34,13 +34,12 @@ public class SignupCommand implements Command {
 		if (validation != SignUpError.VALID){
 			request.setAttribute("errorMessage", LoginError.INVALID_ACCOUNT.getErrorMessage());
 			response.sendError(LoginError.INVALID_ACCOUNT.getHttpStatus());
-			return;
+			// TODO: 2023/03/20 Make throw custom exception and catch it on filter
 		}
 		String hashedPassword = BCrypt.hashpw(password, BCrypt.gensalt());
 		newUser.setPassword(hashedPassword);
 		userService.insertUser(newUser);
 
-		request.getRequestDispatcher(URL.HOME.getViewPath()).forward(request, response);
-
+		return new View("/home.jsp", true);
 	}
 }

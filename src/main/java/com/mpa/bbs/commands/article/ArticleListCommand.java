@@ -2,6 +2,7 @@ package com.mpa.bbs.commands.article;
 
 import com.mpa.bbs.commands.Command;
 import com.mpa.bbs.controller.URL;
+import com.mpa.bbs.controller.View;
 import com.mpa.bbs.service.ArticleService;
 import com.mpa.bbs.service.BoardType;
 import com.mpa.bbs.service.FileService;
@@ -23,7 +24,7 @@ import javax.servlet.http.HttpServletResponse;
 public class ArticleListCommand implements Command {
 
 	@Override
-	public void execute(HttpServletRequest request, HttpServletResponse response)
+	public View execute(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		// request URI 에 따른 게시판 유형
 		// TODO map 없이 enum 값으로만 가능
@@ -64,6 +65,6 @@ public class ArticleListCommand implements Command {
 		request.setAttribute("articleList", articleList);
 		request.setAttribute("articleListFileAttached", articleListFileAttached);
 		request.setAttribute("currentPage", searchCriteria.getCurrentPage());
-		request.getRequestDispatcher(URL.NOTICE.getViewPath()).forward(request, response);
+		return new View("/articleList.jsp");
 	}
 }

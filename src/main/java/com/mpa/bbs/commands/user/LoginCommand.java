@@ -1,7 +1,7 @@
 package com.mpa.bbs.commands.user;
 
 import com.mpa.bbs.commands.Command;
-import com.mpa.bbs.controller.URL;
+import com.mpa.bbs.controller.View;
 import com.mpa.bbs.error.LoginError;
 import com.mpa.bbs.service.UserService;
 import com.mpa.bbs.util.StringUtil;
@@ -28,7 +28,7 @@ public class LoginCommand implements Command {
 	 * @throws IOException
 	 */
 	@Override
-	public void execute(HttpServletRequest request, HttpServletResponse response)
+	public View execute(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		String userInputAccount = request.getParameter("account");
 		String userInputPassword = request.getParameter("password");
@@ -38,12 +38,12 @@ public class LoginCommand implements Command {
 		if (targetUser == null){
 			request.setAttribute("errorMessage", LoginError.INVALID_ACCOUNT.getErrorMessage());
 			response.sendError(LoginError.INVALID_ACCOUNT.getHttpStatus());
-			return;
+			// TODO: 2023/03/20 커스텀 에러 처리 필요
 		}
 		if (!BCrypt.checkpw(userInputPassword, targetUser.getPassword())) {
 			request.setAttribute("errorMessage", LoginError.INCORRECT_PASSWORD.getErrorMessage());
 			response.sendError(LoginError.INCORRECT_PASSWORD.getHttpStatus());
-			return;
+			// TODO: 2023/03/20 커스텀 에러 처리 필요
 		}
 
 		// 로그인 성공 시 세션 생성
@@ -56,9 +56,8 @@ public class LoginCommand implements Command {
 		// 로그인 성공 이후 이전 페이지로 되돌려보내기
 		String prevPage = request.getParameter("prevPage");
 		if (StringUtil.isEmpty(prevPage) || "null".equals(prevPage)){
-			response.sendRedirect(URL.HOME.getUrlPath());
-			return;
+			return new View("/home.jsp", true);
 		}
-		response.sendRedirect(prevPage);
+		return new View(prevPage, true);
 	}
 }

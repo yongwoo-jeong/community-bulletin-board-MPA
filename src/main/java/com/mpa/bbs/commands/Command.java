@@ -1,5 +1,6 @@
 package com.mpa.bbs.commands;
 
+import com.mpa.bbs.controller.View;
 import java.io.IOException;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
@@ -15,7 +16,7 @@ public interface Command {
 	 * @param request HttpServletRequest
 	 * @param response HttpServletResponse
 	 */
-	void execute(HttpServletRequest request, HttpServletResponse response)
+	View execute(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException;
 
 }

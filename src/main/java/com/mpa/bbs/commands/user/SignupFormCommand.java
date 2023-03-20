@@ -1,11 +1,11 @@
 package com.mpa.bbs.commands.user;
 
+import com.mpa.bbs.commands.Command;
+import com.mpa.bbs.controller.View;
 import java.io.IOException;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import com.mpa.bbs.commands.Command;
-import com.mpa.bbs.controller.URL;
 
 /**
  * 회원가입 GET 요청 커맨드
@@ -20,8 +20,8 @@ public class SignupFormCommand implements Command {
 	 * @throws IOException
 	 */
 	@Override
-	public void execute(HttpServletRequest request, HttpServletResponse response)
+	public View execute(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		request.getRequestDispatcher(URL.SIGN_UP.getViewPath()).forward(request,response);
+		return new View("/signupForm.jsp");
 	}
 }

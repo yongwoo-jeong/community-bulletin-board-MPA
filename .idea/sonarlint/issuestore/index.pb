@@ -9,5 +9,3 @@ L
 src/main/webapp/css/home.css,f/c/fc387d32009214d2c86c1b60a998aff5cd9d07de
 ?
 settings.gradle,0/5/05efc8b1657769a27696d478ded1e95f38737233
-m
-=src/main/java/com/mpa/bbs/commands/user/LoginFormCommand.java,1/b/1b2c08e66189abce6c96f9ffbd9af60cb211c6ea

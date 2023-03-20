@@ -1,7 +1,7 @@
 package com.mpa.bbs.commands.article;
 
 import com.mpa.bbs.commands.Command;
-import com.mpa.bbs.controller.URL;
+import com.mpa.bbs.controller.View;
 import com.mpa.bbs.service.ArticleService;
 import com.mpa.bbs.service.BoardType;
 import com.mpa.bbs.service.CommentService;
@@ -21,7 +21,7 @@ import javax.servlet.http.HttpServletResponse;
 public class ArticleDetailCommand implements Command {
 
 	@Override
-	public void execute(HttpServletRequest request, HttpServletResponse response)
+	public View execute(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		Integer articleId = Integer.parseInt(request.getParameter("id"));
 		ArticleVO targetArticle = new ArticleService().select(BoardType.NOTICE.getArticleTable(), articleId);
@@ -30,6 +30,6 @@ public class ArticleDetailCommand implements Command {
 		request.setAttribute("targetArticle", targetArticle);
 		request.setAttribute("fileList", fileList);
 		request.setAttribute("commentList", commentList);
-		request.getRequestDispatcher(URL.NOTICE_DETAIL.getViewPath()).forward(request, response);
+		return new View("/articleDetail.jsp");
 	}
 }

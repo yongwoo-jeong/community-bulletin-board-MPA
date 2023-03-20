@@ -27,7 +27,8 @@ public class FrontController extends HttpServlet {
 			throws ServletException, IOException {
 		String uri = request.getRequestURI();
 		Command action = new UrlMap().getCommand(uri);
-		action.execute(request, response);
+		View view = action.execute(request, response);
+		view.render(request, response);
 	}
 
 	/**
@@ -37,7 +38,8 @@ public class FrontController extends HttpServlet {
 	public void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		String uri = request.getRequestURI();
-		Command action = URL.postCommandByUrl(uri);
-		action.execute(request, response);
+		Command action = new UrlMap().postCommand(uri);
+		View view = action.execute(request, response);
+		view.render(request, response);
 	}
 }

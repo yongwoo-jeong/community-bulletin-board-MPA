@@ -1,6 +1,7 @@
 package com.mpa.bbs.commands.comment;
 
 import com.mpa.bbs.commands.Command;
+import com.mpa.bbs.controller.View;
 import com.mpa.bbs.error.LoginError;
 import com.mpa.bbs.service.BoardType;
 import com.mpa.bbs.service.CommentService;
@@ -15,14 +16,14 @@ import javax.servlet.http.HttpServletResponse;
 public class CommentInsertCommand implements Command {
 
 	@Override
-	public void execute(HttpServletRequest request, HttpServletResponse response)
+	public View execute(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		UserVO loginUser = (UserVO) request.getSession().getAttribute("loginUser");
 		// 로그인되지 않은 경우 에러페이지
 		if (loginUser==null){
 			request.setAttribute("errorMessage", LoginError.NOT_LOGIN_USER.getErrorMessage());
 			response.sendError(LoginError.NOT_LOGIN_USER.getHttpStatus());
-			return;
+			// TODO: 2023/03/20 커스텀에러 throw
 		}
 
 		// 게시판 id
@@ -39,5 +40,6 @@ public class CommentInsertCommand implements Command {
 		String writer = request.getParameter("username");
 		CommentVO newComment = CommentVO.builder().writer(writer).content(content).articleId(articleId).build();
 		new CommentService().insert(boardType, newComment);
+		return new View("/noticeDetail?id"+articleId,true);
 	}
 }

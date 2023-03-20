@@ -1,6 +1,6 @@
 package com.mpa.bbs.commands;
 
-import com.mpa.bbs.controller.URL;
+import com.mpa.bbs.controller.View;
 import java.io.IOException;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
@@ -12,10 +12,12 @@ import javax.servlet.http.HttpServletResponse;
 public class HomeCommand implements Command {
 	/**
 	 * 메인화면(/) 컨트롤러 메서드
+	 *
+	 * @return
 	 */
 	@Override
-	public void execute(HttpServletRequest request, HttpServletResponse response)
+	public View execute(HttpServletRequest request, HttpServletResponse response)
 			throws IOException, ServletException {
-		request.getRequestDispatcher(URL.HOME.getViewPath()).forward(request,response);
+		return new View("/home.jsp");
 	}
 }
